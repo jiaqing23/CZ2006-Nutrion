@@ -1,0 +1,36 @@
+body {
+    font-family: 'Abhaya Libre', serif;
+    font-style: normal;
+
+    background-image: url(../images/registration.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 50%;
+}
+
+.reg-container .logo {
+    width: 30%;
+    min-width: 180px;
+}
+
+.reg-container {
+    margin: 0 auto;
+    margin-top: 2%;
+    padding: 1% 0;
+    width: 50%;
+    text-align: center;
+
+    /* border: green 2px solid; */
+}
+
+.reg-form .form-group {
+    padding-top: 5%;
+}
+
+.reg-form .form-control {
+    width: 30vw;
+}
+
+form p {
+    margin-top: 3%;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 
@@ -8,10 +8,11 @@ import App from './App';
 //import "./styles/bootstrap-4.0.0.css";
 
 ReactDOM.render(
-    <Router>
-       {/* <Auth0ProviderWithHistory> */}
-            <App />
-       {/*  </Auth0ProviderWithHistory>*/}
-    </Router>,
+    <App />,
+    // <Router>
+    //    {/* <Auth0ProviderWithHistory> */}
+    //         <App />
+    //    {/*  </Auth0ProviderWithHistory>*/}
+    // </Router>,
   document.getElementById('root')
 );
