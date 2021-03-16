@@ -2,16 +2,17 @@ import '../styles/Registration.css';
 import React from 'react';
 import logo from '../images/nutrion-black.png'
 
-function Registration() {
+export default function Registration() {
     return (
         <div className="reg-container">
-            <div className="">
+
+            <div>
                     <img className="logo" src={logo} alt=""/>
             </div>
 
             <div className="reg-form">
-                <article className="card-body mx-auto" style={{maxWidth: "400px"}}>
-                    <h4 className="card-title mt-3 text-center">Register an account with us today!</h4>
+                <article className="card-body mx-auto">
+                    <h4 className="card-title mt-3 text-center">Account Registration</h4>
 
                     <form>
                         <div className="form-group input-group">
@@ -27,22 +28,20 @@ function Registration() {
                         </div> 
 
                         <div className="form-group input-group">
-                            <input className="form-control" placeholder="Password" type="password"/>
+                            <input name="" className="form-control" placeholder="Password" type="password"/>
                         </div> 
 
                         <div className="form-group input-group">
-                            <input className="form-control" placeholder="Confirm password" type="password"/>
+                            <input name="" className="form-control" placeholder="Confirm password" type="password"/>
                         </div> 
 
                         <div className="form-group">
                             <button type="submit" className="btn btn-dark btn-block">Register</button>
                         </div> 
-                        <p className="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+                        <p className="text-center">Have an account? <a href="">Log In!</a> </p>                                                                 
                     </form>
                 </article>
             </div>
         </div>
     );
 }
-
-export default Registration;
