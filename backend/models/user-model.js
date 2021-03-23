@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type: String,
+        required: true,
         unique: true,
         uniqueCaseInsensitive: true
     },
@@ -27,10 +28,9 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-
     },
     profilePicture:{
-        type:String
+        type: String
     },
     verified: {
         type: Boolean,
