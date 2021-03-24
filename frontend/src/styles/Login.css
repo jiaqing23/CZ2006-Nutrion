@@ -2,19 +2,15 @@ body {
     font-family: 'Abhaya Libre', serif;
     font-style: normal;
 
-<<<<<<< HEAD
-    background-image: url(../assets/images/registration.jpg);
-=======
 }
 
-.reg-container {
+.log-container {
     margin: 0 auto;
-    padding: 0;
-    padding-bottom: 5%;
+    padding: 15%;
+    padding-top: 10%;
     text-align: center;
     
     background-image: url(../images/registration.jpg);
->>>>>>> 16fc60098f07205394dbac3de63fb5347fd121f5
     background-repeat: no-repeat;
     background-position: right;
     background-size: 65%;
@@ -28,7 +24,7 @@ body {
     font-size: 225%;
 }
 
-.reg-container .logo {
+.log-container .logo {
     margin: 0;
     padding: 0;
     margin-top: 4%;
@@ -40,15 +36,15 @@ body {
     max-width: 400px;
 }
 
-.reg-form {
+.log-form {
     padding: 0 25%;
 }
 
-.reg-form .form-group {
+.log-form .form-group {
     padding-top: 5%;
 }
 
-.reg-form .form-control {
+.log-form .form-control {
     width: 30vw;
 }
 
