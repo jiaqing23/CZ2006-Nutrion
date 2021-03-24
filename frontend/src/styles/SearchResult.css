@@ -1,0 +1,53 @@
+body {
+    font-family: 'Abhaya Libre', serif;
+    font-style: normal;
+
+}
+
+.reg-container {
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 5%;
+    text-align: center;
+    
+    background-image: url(../images/registration.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 65%;
+
+    /* border: green 2px solid; */
+
+}
+
+.card-title {
+    font-weight: 800;
+    font-size: 225%;
+}
+
+.reg-container .logo {
+    margin: 0;
+    padding: 0;
+    margin-top: 4%;
+    width: 30%;
+    min-width: 250px;
+}
+
+.card-body {
+    max-width: 400px;
+}
+
+.reg-form {
+    padding: 0 25%;
+}
+
+.reg-form .form-group {
+    padding-top: 5%;
+}
+
+.reg-form .form-control {
+    width: 30vw;
+}
+
+form p {
+    margin-top: 3%;
+}
