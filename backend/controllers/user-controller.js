@@ -4,12 +4,21 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports['getAllUsers'] = function(callback){
     UserModel.find({},(err,result)=>{
-        if(err)
-        {
+        if(err){
             callback(err)
         }
-        else 
-        {
+        else{
+            callback(null,result)
+        }
+    })
+}
+
+module.exports['getUser'] = function(userId, callback){
+    UserModel.find({userId: userId},(err,result)=>{
+        if(err){
+            callback(err)
+        }
+        else{
             callback(null,result)
         }
     })
@@ -23,4 +32,19 @@ module.exports['addUser'] = function (user, callback) {
         console.log(err)
         callback(err)
     })
+}
+
+module.exports['updateUser'] = function(userId, updateMap, callback){
+    UserModel.findOneAndUpdate(
+        {userId: userId},
+        updateMap,
+        (err, result) => {
+            if(err){
+                callback(err)
+            }
+            else{
+                callback(null, result)
+            }
+        }
+    )
 }
