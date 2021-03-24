@@ -19,6 +19,9 @@ body {
     margin: 0;
     padding: 1% 0;
     height: fit-content;
+    position: fixed;
+    z-index:100;
+    top:0;
     width: 80%;
     left: 10%;
     background: #FEFFF9;
