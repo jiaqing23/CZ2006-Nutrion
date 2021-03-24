@@ -17,9 +17,10 @@ function MealPlanner() {
 
     return(
         <>
-            <div class="row justify-content-begin">
-                <div class="col-2">
-                    <Button />
+            <div class="row justify-content-end">
+                <div class="col-4">
+                    <Button text="wakaka"/>
+                    <Button text="wakak" />
                 </div>
             </div>
             <ul className="tabs group">

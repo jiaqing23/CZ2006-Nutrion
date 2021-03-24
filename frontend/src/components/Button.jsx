@@ -1,13 +1,10 @@
 import React, {useState} from 'react'
 import '../styles/Button.css'
-import Button from './Button'
 
-function MealPlanner() {
+function Button(props) {
     return(
-        <button className="button"> ok </button>
+        <button className="button"> {props.text} </button>
     );
-
-
 }
 
-export default MealPlanner;
+export default Button;
