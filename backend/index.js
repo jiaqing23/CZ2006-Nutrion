@@ -8,10 +8,19 @@ const app = express();
 app.use(bodyParser.json({limit: '150mb'}))
 app.use(cors());
 
-const userModel = require('./models/user-model')
+const UserModel = require('./models/user-model')
+const MealPlannerModel = require('./models/meal-planner-model')
+const MealPlanModel = require('./models/meal-plan-model')
+const FavouriteListModel = require('./models/favourite-list-model')
 
 const User = require('./routes/user');
+const MealPlanner = require('./routes/meal-planner');
+const MealPlan = require('./routes/meal-plan');
+const FavouriteList = require('./routes/favourite-list');
 app.use('/user', User);
+app.use('/mealPlanner', MealPlanner);
+app.use('/mealPlan', MealPlan);
+app.use('/favouriteList', FavouriteList);
 
 mongoose.connect(mongoConnectionString,{
     useNewUrlParser:true,

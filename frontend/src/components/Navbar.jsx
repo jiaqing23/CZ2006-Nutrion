@@ -6,12 +6,12 @@ function Navbar() {
     return (
         <div className="navbar">
             <div className="logo-container">
-                <a href="https://google.com" target="_blank">
+                <a href="https://google.com">
                     <img className="logo" src={logo} alt=""/>
                 </a>
             </div>
             <div className="nav-item">
-                <ul className="nav-justify-content-end">
+                <ul>
                     <li>Plan</li>
                     <li>Recipe</li>
                     <li>Home</li>
