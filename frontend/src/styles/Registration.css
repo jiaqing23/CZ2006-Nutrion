@@ -5,18 +5,17 @@ body {
 }
 
 .reg-container {
+    /* border: green 2px solid; */
+
     margin: 0 auto;
     padding: 0;
     padding-bottom: 5%;
     text-align: center;
     
-    background-image: url(../images/registration.jpg);
+    background-image: url(../assets/images/registration.jpg);
     background-repeat: no-repeat;
     background-position: right;
     background-size: 65%;
-
-    /* border: green 2px solid; */
-
 }
 
 .card-title {

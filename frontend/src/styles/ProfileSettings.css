@@ -1,0 +1,91 @@
+.settings-container {
+    /* border: 2px solid green; */
+    
+    background-color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border: white 0.1px solid;
+    
+    float: right;
+    margin-top: 4%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    padding: 20px;
+    width: 55%;
+    height: max-content;
+}
+
+.settings-container ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.settings-container li {
+    font-size: 25px;
+    list-style: none;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+.settings-container a {
+    clear: both;
+    background: transparent;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 10px;
+    height: 80px;
+}
+
+.settings-container .picture-anchor {
+    height: 175px;
+}
+
+.settings-container a:hover {
+    background: transparent;
+    display: block;
+    text-decoration: none;
+    background-color: #fffef6;
+    /* border: black solid 0.5px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.settings-container h3 {
+    padding-top: 5px;
+    width: 190px;
+    float: left;
+}
+
+.items-settings {
+    padding-top: 3px;
+    display: block;
+    float: left;
+}
+
+.items-settings img {
+    margin-top: 10px;
+    width: 120px;
+    height: 120px;
+}
+
+.settings-container .edit-button {
+    float: right;
+}
+
+.settings-container .button {
+    font-size: 20px;
+    height: 40px;
+    width: 100px;
+}
+
+.hide {
+    display: none;
+}
+
+.input-settings {
+    width: 350px;
+}

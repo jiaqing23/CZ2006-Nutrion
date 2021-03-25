@@ -1,6 +1,6 @@
-import '../styles/Registration.css';
 import React from 'react';
-import logo from '../images/nutrion-black.png'
+import '../styles/Registration.css';
+import logo from '../assets/images/nutrion-black.png'
 
 export default function Registration() {
     return (
