@@ -11,4 +11,4 @@ const ShortRecipe = ({title, calories, image}) => {
     );
 };
 
-export default Button;
+export default ShortRecipe;

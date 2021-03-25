@@ -11,13 +11,9 @@ import SearchResult from './pages/SearchResult';
 function App() {
   return (
     <div>
-<<<<<<< HEAD
       <Homepage />
       <Navigation />
       {/* <Registration /> */}
-=======
-      <MealPlanner />
->>>>>>> 16fc60098f07205394dbac3de63fb5347fd121f5
     </div>
   );
 }
