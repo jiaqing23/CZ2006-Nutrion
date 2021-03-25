@@ -1,26 +1,27 @@
 import React from 'react'
 import '../styles/ProfileOverview.css'
 
-export default function ProfileOverview() {
+export default function ProfileOverview(props) {
     return (
         <div>
             <div className="overview-container">
 
-                <h2>Health Conditions</h2>
+                <h1>Overview</h1>
+                <h3>Health Conditions</h3>
                 <div className="condition-container">
                     <ul>
-                        <li>Too fat</li>
-                        <li>Too stressed</li>
-                        <li>Too ugly</li>
+                        {props.user.conditions.map((condition) => (
+                                        <li>{condition}</li>
+                                    ))}
                     </ul>
                 </div>
 
-                <h2>Lacking Nutritional Elements</h2>
+                <h3>Lacking Nutrients</h3>
                 <div className="lack-container">
                     <ul>
-                        <li>Love</li>
-                        <li>Money</li>
-                        <li>Sleep</li>
+                        {props.user.nutrients.map((nutrient) => (
+                                            <li>{nutrient}</li>
+                                        ))}
                     </ul>
                 </div>
 

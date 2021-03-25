@@ -115,6 +115,7 @@ export default function ProfileSettings(props) {
     return (
         <div>
             <div className="settings-container">
+                <h1>Settings</h1>
                 <ul>
                     <li>
                         <a className="picture-anchor" href="#">

@@ -9,9 +9,28 @@
     margin-top: 4%;
     margin-right: 10%;
     margin-bottom: 50px;
-    padding: 20px;
+    padding: 15px;
+    padding-bottom: 50px;
     width: 55%;
     height: max-content;
+}
+
+.settings-container h1 {
+    padding: 0 20px;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.settings-container h1:after {
+    content:' ';
+    display:block;
+    border:2px solid black;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    box-shadow:inset 0 1px px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .settings-container ul {
@@ -24,8 +43,8 @@
 .settings-container li {
     font-size: 25px;
     list-style: none;
-    margin-right: 15px;
     margin-top: 20px;
+    padding: 0 20px;
 }
 
 .settings-container a {
@@ -48,7 +67,7 @@
     display: block;
     text-decoration: none;
     background-color: #fffef6;
-    /* border: black solid 0.5px; */
+    border: black solid 0.5px;
     border-radius: 5px;
     cursor: pointer;
 }

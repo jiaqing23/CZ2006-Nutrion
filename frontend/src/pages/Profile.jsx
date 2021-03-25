@@ -26,10 +26,10 @@ export default function Profile() {
     return (
         <div>
             {/* <ProfilePicUpload /> */}
-            <div style={{marginTop: "70px"}} className="main-profile-container">
+            <div style={{marginTop: "70px", marginBottom: "70px"}} className="main-profile-container">
                 
                 <ProfileHeader user={user} toggleOverview = {toggleToOverview} toggleSettings = {toggleToSettings} />                            
-                {selected === "overview" ? <ProfileOverview />:
+                {selected === "overview" ? <ProfileOverview user={user}/>:
                                             <ProfileSettings user={user}/>}
                 
             </div>
