@@ -22,7 +22,7 @@ export default function Profile() {
 
     return (
         <div>
-            <div className="main-profile-container">
+            <div style={{marginTop: "70px"}} className="main-profile-container">
                 
                 <ProfileHeader user={user} toggleOverview = {toggleToOverview} toggleSettings = {toggleToSettings} />                            
                 {selected === "overview" ? <ProfileOverview />:
