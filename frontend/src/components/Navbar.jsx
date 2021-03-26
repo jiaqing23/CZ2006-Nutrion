@@ -1,6 +1,7 @@
 import '../styles/Navbar.css';
 import React from 'react';
-import logo from '../assets/images/nutrion-black.png'
+import '../assets/images/nutrion-black.png';
+import logo from '../assets/images/nutrion-white.png';
 
 function Navbar() {
     return (

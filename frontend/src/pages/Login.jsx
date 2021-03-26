@@ -1,6 +1,6 @@
 import '../styles/Login.css';
 import React from 'react';
-import logo from '../images/nutrion-black.png'
+import logo from '../assets/images/nutrion-black.png'
 
 export default function Login() {
     return (

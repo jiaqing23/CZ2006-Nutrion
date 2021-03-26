@@ -2,9 +2,6 @@ body {
     font-family: 'Abhaya Libre', serif;
     font-style: normal;
 
-<<<<<<< HEAD
-    background-image: url(../assets/images/registration.jpg);
-=======
 }
 
 .reg-container {
@@ -13,8 +10,7 @@ body {
     padding-bottom: 5%;
     text-align: center;
     
-    background-image: url(../images/registration.jpg);
->>>>>>> 16fc60098f07205394dbac3de63fb5347fd121f5
+    background-image: url(../assets/images/registration.jpg);
     background-repeat: no-repeat;
     background-position: right;
     background-size: 65%;

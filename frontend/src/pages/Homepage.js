@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import HomeSearch from '../components/HomeSearch';
 import HomeRecipe from '../components/HomeRecipe';
 import '../styles/Homepage.css';
@@ -18,7 +17,7 @@ function Homepage() {
                           {meal:"dinner",recipeTitle:"Salmon",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"15minutes"}]]
    
     return (
-      <div>
+      <div className="Homepage-container">
         <HomeSearch/>
         {/* Recipe recommendation section */}
         <div className="row">
@@ -73,7 +72,6 @@ function Homepage() {
           </div>
           <div className="col-2 col-sm-2 col-md-1"></div>
         </div>
-        <Footer />
       </div>
     );
   }

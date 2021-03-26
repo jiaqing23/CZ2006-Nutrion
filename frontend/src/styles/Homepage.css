@@ -2,6 +2,11 @@ HomeSearch{
     margin-top: 50px;
 }
 
+.Homepage-container{
+    background-image: url("../assets/images/homepage-bg.jpg");
+    background-size: 100%;
+}
+
 .recipeRecTitle{
     margin-top: 5vh;
     font-size: 2vw;
