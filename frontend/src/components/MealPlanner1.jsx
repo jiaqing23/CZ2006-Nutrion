@@ -3,6 +3,7 @@ import '../styles/MealPlanner.css'
 import { GiPieChart, GiHotMeal } from "react-icons/gi";
 import MealPlannerBoard from './MealPlannerBoard'
 import Button from './Button'
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function MealPlanner() {
     const [selected, setSelected] = useState("mealplan");
@@ -16,23 +17,27 @@ function MealPlanner() {
     }
 
     return(
-        <>
-            <div class="row justify-content-end">
-                <div class="col-4">
-                    <Button text="wakaka"/>
-                    <Button text="wakak" />
-                </div>
+        <div class="wrap">
+            <div class="left">
             </div>
+            <div class="right">
+                <div class="row justify-content-end">
+                    <div class="col-4">
+                        <Button text="Save"/>
+                        <Button text="Print" />
+                    </div>
+                </div>
             <ul className="tabs group">
                 <li className={selected=="mealplan"?"active":""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li> 
                 <li className={selected=="nutrient"?"active":""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
             </ul>
         
             <div id="content">
-                {selected=="mealplan"?<h1>Meal plan</h1>:<h1>Nutrient</h1>}
-               
+                 {selected=="mealplan"?<MealPlannerBoard/>:<h1>Nutrient</h1>} 
+ 
             </div>
-        </>
+            </div>
+        </div>
     );
 
 
