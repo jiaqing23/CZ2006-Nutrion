@@ -38,7 +38,7 @@ export default function Registration() {
                         <div className="form-group">
                             <button type="submit" className="btn btn-dark btn-block">Register</button>
                         </div> 
-                        <p className="text-center">Have an account? <a href="">Log In!</a> </p>                                                                 
+                        <p className="text-center">Have an account? <a href="http://www.google.com">Log In</a> </p>                                                                 
                     </form>
                 </article>
             </div>

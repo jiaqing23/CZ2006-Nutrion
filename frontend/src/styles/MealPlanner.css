@@ -4,12 +4,6 @@
 	 http://css-tricks.com
 */
 
-h1 { 
-	width: 660px; 
-	margin: 0 auto;
-	padding: 20px 0;
-	color: #E5E5E5;
-}
 
 .group:before,
 .group:after {
@@ -24,7 +18,7 @@ h1 {
 }
 
 body { 
-	background: #E5E5E5; 
+	background: #fefff9; 
 }
 #content { 
 	background: white; 
