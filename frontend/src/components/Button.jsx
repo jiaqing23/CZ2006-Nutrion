@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import '../styles/Button.css'
 
 function Button(props) {
+
     return(
-        <button className="button"> {props.text} </button>
+        <button type="button" onClick={props.onClick} className="button"> {props.text} </button>
     );
 }
 

@@ -1,4 +1,3 @@
-import '../styles/Navbar.css';
 import React from 'react';
 import '../assets/images/nutrion-black.png';
 import logo from '../assets/images/nutrion-white.png';

@@ -7,7 +7,8 @@ import Registration from './pages/Registration';
 import Login from './pages/Login'
 import MealPlanner from './components/MealPlanner';
 import MealPlannerBoard from './components/MealPlannerBoard';
-import DishDetail from './pages/DishDetail';
+import DishDetail from './pages/DishDetail';\
+import SearchResult from './pages/SearchResult';
 
 function App() {
   return (
@@ -18,8 +19,13 @@ function App() {
       {/* <Registration /> */}
       {/* <DishDetail /> */}
       <Footer />
+      {/* <Login /> */}
+      <Profile />
     </div>
   );
 }
 
 export default App;
+
+//<Homepage />
+  //    <Navigation />

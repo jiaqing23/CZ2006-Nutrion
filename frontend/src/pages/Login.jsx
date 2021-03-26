@@ -1,10 +1,14 @@
-import '../styles/Login.css';
 import React from 'react';
+import '../styles/Login.css';
 import logo from '../assets/images/nutrion-black.png'
 
 export default function Login() {
     return (
         <div className="log-container">
+
+            <div>
+                    <img className="logo" src={logo} alt=""/>
+            </div>
 
             <div className="log-form">
                 <article className="card-body mx-auto" style={{maxWidth: "400px"}}>
