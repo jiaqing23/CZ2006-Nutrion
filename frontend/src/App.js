@@ -7,6 +7,7 @@ import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
 import Login from './pages/Login'
 import MealPlanner from './components/MealPlanner';
+import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
 import SearchResult from './pages/SearchResult';

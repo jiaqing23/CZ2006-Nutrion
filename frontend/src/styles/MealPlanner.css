@@ -5,6 +5,24 @@
 */
 
 
+.wrap {
+  display: flex;
+}
+
+.left {
+  background: black;
+  flex-basis: 20%;
+}
+
+.right {
+  background: #E5E5E5;
+  flex-basis: 80%;
+  
+  height: 100vh; 
+  overflow: auto;
+}
+
+
 .group:before,
 .group:after {
     content: "";
@@ -20,16 +38,19 @@
 body { 
 	background: #fefff9; 
 }
+
 #content { 
-	background: white; 
 	min-height: 400px; 
+	margin: 0 20px 0 20px;
+	min-width: 1000px;
 }
 
 .tabs { 
 	list-style: none; 
-	margin: 60px auto 0; 
-	width: 660px;
+	margin: 60px 0 auto; 
+	width: 380px;
 }
+
 .tabs li { 
 	/* Makes a horizontal row */
 	float: left; 
@@ -38,6 +59,7 @@ body {
 		abs. positioned inside */
 	position: relative; 
 }
+
 .tabs a { 
 	/* Make them block level
 		and only as wide as they need */
