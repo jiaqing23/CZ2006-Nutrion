@@ -5,6 +5,7 @@
   font-size:15px;
   line-height:24px;
   color:#737373;
+  
 }
 .site-footer hr
 {
@@ -47,7 +48,7 @@
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
-  color:#3366cc;
+  color:#ffc46c;
   text-decoration:none;
 }
 .footer-links.inline li

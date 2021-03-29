@@ -1,8 +1,15 @@
 
 import React, {useState} from 'react'
 //import '../styles/MealPlanner.css'
-//import { GiPieChart, GiHotMeal } from "react-icons/gi";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import '../styles/MealPlannerBoard.css'
+
+import BreakfastLogo from '../assets/images/breakfast-icon.svg';
+import LunchLogo from '../assets/images/lunch-icon.svg';
+import DinnerLogo from '../assets/images/dinner-icon.svg';
+
+import PlannerCard from './PlannerCard'
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -35,7 +42,20 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     return result;
 };
 
-const grid = 0;
+const getTimetableHead = () => {
+    const days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const tem = [];
+    for (let i = 0; i < 8; i++) {
+        tem.push(
+          <div className="timetable-col timetable-col-center timetable-black">
+            {days[i]}
+          </div>
+        );
+      }
+      return <div className="timetable-row timetable-header">{tem}</div>;
+}
+
+const grid = 1;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
@@ -43,24 +63,27 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     margin: `0 0 ${grid}px 0`,
 
     // change background colour if dragging
-    background: isDragging ? "lightgreen" : "lightgrey",
-    
-    height: 30,
+    //background: isDragging ? "#DDDDDD" : "#E5E5E5",
 
+    textAlign: "center",
+    lineHeight: "30px", 
     // styles we need to apply on draggables
     ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
     //background: isDraggingOver ? "lightblue" : "lightgrey",
-    background: "lightgrey",
+    background: "#E5E5E5",
+    "min-height":150
     //padding: grid,
-    width: 250,
-    "min-height": 200
 });
 
+
+
 function MealPlannerBoard() {
-    const [state, setState] = useState([getItems(6), getItems(5, 10),getItems(5, 20),getItems(5, 60),getItems(5, 30)]);
+    const [state, setState] = useState([getItems(1), getItems(1, 10),getItems(1, 50),getItems(2, 60),getItems(2, 20),getItems(2, 111),getItems(2, 222),
+    getItems(1,1224), getItems(2, 101),getItems(2, 201),getItems(1, 601),getItems(1, 201),getItems(1, 1111),getItems(1, 2212),
+    getItems(1,95), getItems(1, 910),getItems(1, 920),getItems(1, 960),getItems(1, 920),getItems(1, 9111),getItems(1, 9222)]);
 
     function onDragEnd(result) {
       const { source, destination } = result;
@@ -87,62 +110,108 @@ function MealPlannerBoard() {
         setState(newState);
         }
     }
+
+    const deleteItem = (ind, index) => {
+        return () => {  const newState = [...state];
+                        newState[ind].splice(index, 1);
+                        setState(newState);
+                    }
+    }
+
+    const getTimetableBody = () => {
+        const rows = [];
+        
+        const meals = ["Breakfast", "Lunch", "Dinner"];
+        const mealsLogo = [BreakfastLogo, LunchLogo, DinnerLogo];
+        for(let j = 0; j < 3; j++){
+            let tem = [];
+            tem.push(<div className="timetable-col timetable-col-center timetable-black timetable-body-title">
+            <img src={mealsLogo[j]} alt="Breakfast Logo" className="mealslogo" />
+            {meals[j]}
+            </div>);
+            for(let i = 0; i < 7; i++) {
+                tem.push(
+                <div className="timetable-col timetable-col-center timetable-transparent">
+               
+                    <Droppable key={j*7+i} droppableId={`${j*7+i}`}>
+                        {(provided, snapshot) => (
+                        <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
+                            {state[j*7+i].map((item, index) => (
+                            <Draggable key={item.id} draggableId={item.id} index={index} >
+                                {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
+                                >
+                                    <div style={{display: "flex", justifyContent: "space-around" }}>
+                                    <PlannerCard deleteItem={deleteItem(j*7+i, index)}/>
+                                    </div>
+                                </div>
+                                )}
+                            </Draggable>
+                            ))}
+                            {provided.placeholder}
+                        </div>
+                        )}
+                    </Droppable>
+                    
+                </div>
+                );
+            }
+            rows.push(<div className="timetable-row timetable-body">{tem}</div>);
+        }
+        
+        return <div>{rows}</div>;
+    }
   
     return (
       <div>
-        <div style={{ display: "flex" }}>
+         
+        
+        <div>
           <DragDropContext onDragEnd={onDragEnd}>
-            {state.map((el, ind) => (
-              <Droppable key={ind} droppableId={`${ind}`}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    style={getListStyle(snapshot.isDraggingOver)}
-                    {...provided.droppableProps}
-                  >
-                    {el.map((item, index) => (
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={getItemStyle(
-                              snapshot.isDragging,
-                              provided.draggableProps.style
-                            )}
-                          >
+            {getTimetableHead()}
+            {getTimetableBody()}
+{/* 
+            <div className="row">
+                {state.map((el, ind) => (
+                <Droppable key={ind} droppableId={`${ind}`}>
+                    {(provided, snapshot) => (
+                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
+                        {el.map((item, index) => (
+                        <Draggable key={item.id} draggableId={item.id} index={index} >
+                            {(provided, snapshot) => (
                             <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-around"
-                              }}
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                             >
-                              {item.content}
-                               <button
-                                type="button"
-                                onClick={() => {
-                                  const newState = [...state];
-                                  newState[ind].splice(index, 1);
-                                  setState(newState);
-                                }}
-                              >
-                                delete
-                              </button>
+                                <div style={{display: "flex", justifyContent: "space-around" }}>
+                                {item.content}
+                                <button type="button" onClick={() => {
+                                    const newState = [...state];
+                                    newState[ind].splice(index, 1);
+                                    setState(newState);
+                                    }}
+                                >
+                                    delete
+                                </button>
+                                </div>
                             </div>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            ))}
+                            )}
+                        </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                    )}
+                </Droppable>
+                ))}
+            </div> */}
+
+            
           </DragDropContext>
         </div>
       </div>
