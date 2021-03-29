@@ -15,7 +15,7 @@ function App() {
       <Navigation />
       {/* <Registration /> */}
       {/* <Login /> */}
-      <Profile />
+      {/*<Profile /> */}
     </div>
   );
 }
