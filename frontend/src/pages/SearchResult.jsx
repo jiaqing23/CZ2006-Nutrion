@@ -2,57 +2,97 @@ import '../styles/SearchResult.css';
 import React, {useEffect, useState} from 'react';
 //import logo from '../images/nutrion-black.png'
 import ShortRecipe from '../components/ShortRecipe';
+import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import { Grid } from '@material-ui/core';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      padding: '2px 4px',
+      display: 'flex',
+      margin: '10px auto',
+      alignItems: 'center',
+      width: 400,
+    },
+    input: {
+      marginLeft: theme.spacing(1),
+      flex: 1,
+    },
+    iconButton: {
+      padding: 10,
+    }
+  }));
 
 export default function SearchResult() {
     
-    //create empty array for the recipes
+    const classes = useStyles();
+    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
     const [recipes, setRecipes] = useState([]);
-
-    //create empty string for the search
-    const [search, setSearch] = useState('');
-
-    //create a state that submits itself only after clicking button
-    const [query, setQuery] = useState('chicken');
+    const [search, setSearch] = useState("");
+    const [query, setQuery] = useState('pasta');
 
     useEffect(() => {
-        getRecipes();
+        getRecipe();
     }, [query]);
 
-    //wait for the response of the api fetch call
-    const getRecipes = async () => {
-        const response = await fetch('');
-        const data = await response.json();
-        setRecipes(data.hits);
-    }
+    const getRecipe = async () => {
+        const response = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=' + {API_KEY} + '&query=' + {query});
+        setRecipes(response.data.hits);
+        console.log(response.data.hits);
+    };
 
-    //update search input based on the input of the search bar
-    const updateSearch = e => {
+    const updateSearch = (e) => {
         setSearch(e.target.value);
-    }
+    };
 
-    //run this function whenever the user submits the search query
-    const getSearch = e => {
+    const updateQuery = (e) => {
         e.preventDefault();
         setQuery(search);
-        setSearch('');
-    }
+        setSearch("");
+    };
     
     return (
-        <div className="reg-container">
-            <form onSubmit={getSearch} classname="search-form">
+        <div>
+            <Paper onSubmit={updateQuery} component="form" className={classes.root}>
+                <InputBase
+                    type="text" 
+                    value={search} 
+                    onChange={updateSearch}
+                    className={classes.input}
+                    placeholder="Search for Dishes"
+                    inputProps={{ 'aria-label': 'search for Dishes' }}
+                />
+                <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                    <SearchIcon />
+                </IconButton>
+                
+            </Paper>
+            { /*<form classname="search-form" onSubmit={updateQuery}>
                 <input classname="search-bar" type="text" value={search} onChange={updateSearch}/>
                 <button classname="search-button" type="submit">
                     Search
                 </button>
-            </form>
-            {recipes.map(recipe => (
-                <ShortRecipe key = {recipe.recipe.label}
-                            title = {recipe.recipe.label} 
-                            calories = {recipe.recipe.calories}
-                            image = {recipe.recipe.image}
-                            ingredients={recipe.recipe.ingredients}
+            </form> */}
+            <div style={{margin:'10px'}}>
+            <Grid container>
+            {recipes.map((recipe) => (
+                <Grid item xs={3}>
+                <ShortRecipe 
+                key={recipe.results.title}
+                title={recipe.results.title} 
+                calories={recipe.results.calories} 
+                image={recipe.results.image}
+                ingredient={recipe.results.ingredients}
                 />
+                </Grid>
             ))}
+            </Grid>
+            </div>
         </div>
     );
 }

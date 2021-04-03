@@ -16,13 +16,14 @@ function App() {
   return (
     <>
       <div>
-        <Navigation />
+        {/*<Navigation /> */}
         {/* <Profile /> */}
-        <MealPlanner />
+        {/*<MealPlanner />*/}
         {/* <Homepage /> */}
         {/* <Registration /> */}
         {/* <DishDetail /> */}
         {/* <Login /> */}
+         <SearchResult /> 
       </div>
       <Footer />
     </>
