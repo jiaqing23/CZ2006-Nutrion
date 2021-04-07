@@ -48,6 +48,7 @@ function MealPlanner() {
                 />))}
             </div>
             </div>
+            
             <div class="right">
                 <div class="button-row justify-content-end">
                     <div class="d-flex flex-row-reverse">
@@ -55,10 +56,11 @@ function MealPlanner() {
                         <Button text="Print" />
                     </div>
                 </div>
-            <ul className="tabs group">
-                <li className={selected=="mealplan"?"active":""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li> 
-                <li className={selected=="nutrient"?"active":""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
-            </ul>
+                
+                <ul className="tabs group">
+                    <li className={selected=="mealplan"?"active":""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li> 
+                    <li className={selected=="nutrient"?"active":""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
+                </ul>
         
             <div id="content">
                  {selected=="mealplan"?<MealPlannerBoard/>:<MealPlannerChart/>} 

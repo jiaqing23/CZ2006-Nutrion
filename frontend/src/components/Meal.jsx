@@ -4,7 +4,7 @@ import '../styles/Meal.css';
 export default function Meal({meal}) {
     
     const [imageUrl, setImageUrl] = useState("");
-    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
+    const API_KEY = "07bdfcda764443ffbcf11862a56f70f5";
 
     useEffect(() => {
         fetch(

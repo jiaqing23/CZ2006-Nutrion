@@ -46,7 +46,7 @@ function DishDetail() {
          <div>
              <div className="row first-dish-container">
                 <div className="col-md-2"></div>
-                <div className="col-md-8">
+                <div className="col-md-8" style={{marginBottom: "100px"}}>
                     <div className="row">
                         <div className="col-md-6"><img className="DishDetailImg" src={salmon} alt="nthg"/></div>
                         <div className="col-md-6">
@@ -85,7 +85,7 @@ function DishDetail() {
                         </div>
                     </div>
                     <div className="Ingredient">
-                        <h2 style={{fontWeight:"800px",margin:"10px"}}>Ingredients</h2>
+                        <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Ingredients</h2>
                         <div className="ingredientList  d-flex flex-wrap justify-content-between">
                             <StyledFormControlLabel
                                 control={<BlackCheckbox checked={state.checkedG} 
@@ -131,7 +131,7 @@ function DishDetail() {
                         </div>
                     </div>
                     <div>
-                    <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Directions</h2>
+                    <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Steps</h2>
                     </div>
                     <DirectionsAccordian />
                     <DirectionsAccordian />

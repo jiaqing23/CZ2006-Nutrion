@@ -19,7 +19,7 @@ export default function MealPlanResult() {
     
     const [mealData, setMealData] = useState(null);
     const [calories, setCalories] = useState(2000);
-    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
+    const API_KEY = "07bdfcda764443ffbcf11862a56f70f5";
 
     function handleChange(e) {
         setCalories(e.target.value);
