@@ -7,7 +7,7 @@ import Registration from './pages/Registration';
 import Login from './pages/Login'
 import MealPlanner from './components/MealPlanner';
 import MealPlannerBoard from './components/MealPlannerBoard';
-import DishDetail from './pages/DishDetail';\
+import DishDetail from './pages/DishDetail';
 import SearchResult from './pages/SearchResult';
 
 function App() {
@@ -15,12 +15,12 @@ function App() {
     <div>
       
       <Navigation />
-      <Homepage />
+      {/* <Homepage /> */}
       {/* <Registration /> */}
-      {/* <DishDetail /> */}
+      <DishDetail />
       <Footer />
       {/* <Login /> */}
-      <Profile />
+      {/* <Profile /> */}
     </div>
   );
 }
