@@ -13,6 +13,7 @@ import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
 import SearchResult from './pages/SearchResult';
+import MealPlanResult from './pages/MealPlanResult';
 
 import {userContext} from './contexts';
 
