@@ -1,14 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react';
+import '../styles/SearchResult.css';
 
+export default function ShortRecipe({recipe}) {
+    
+    const [imageUrl, setImageUrl] = useState("");
+    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
 
-const ShortRecipe = ({title, calories, image}) => {
+    function handleImage(recipe) {
+        setImageUrl(recipe.image);
+    }
+
+    useEffect(() => {
+        handleImage(recipe);
+    })
+    
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{calories}</p>
-            <img src={image} alt="" />
-        </div>
-    );
-};
+        <article>
+            <h1>{recipe.title}</h1>
+            <img src={imageUrl} alt="recipe" />
+            <ul className="instructions">
+                <li>Calories: </li>
+            </ul>
 
-export default ShortRecipe;
+        </article>
+    )
+}
