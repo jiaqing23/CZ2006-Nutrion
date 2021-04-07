@@ -20,11 +20,11 @@ function App() {
         {/*<Navigation /> */}
         {/* <Profile /> */}
         {/*<MealPlanner />*/}
-         <Homepage /> 
+        {/* <Homepage /> */}
         {/* <Registration /> */}
         {/* <DishDetail /> 
         {/* <Login /> */}
-        {/* <SearchResult /> */}
+         {/* <SearchResult /> */}
           <MealPlanResult />
       </div>
       <Footer />
