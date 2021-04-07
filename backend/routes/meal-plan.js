@@ -2,10 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 
+const DishController = require('../controllers/dish-controller')
+const SpoonacularController = require('../controllers/spoonacular-controller')
 const MealPlanController = require('../controllers/meal-plan-controller')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const queryMap = {}
+
+    const {calories} = req.query;
+
+    if(calories) queryMap["nutrition.calories"] = {$lt: calories};
+
     MealPlanController.getMealPlans(
         queryMap,
         (err, result) => {
@@ -13,7 +20,11 @@ router.get('/', (req, res) => {
                 return res.status(500).send({ message: `${err}`})
             }
             else{
-                return res.status(200).send(result)
+                DishController.getDishesForMealPlans(result, (err, data) => {
+                    if(err) return res.status(500).send({message: `${err}`})
+                    else return res.status(200).send(data)
+                })
+               
             }
         }
     )

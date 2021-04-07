@@ -24,8 +24,35 @@ module.exports['getUser'] = function(userId, callback){
     })
 }
 
-module.exports['addUser'] = function (user, callback) {
+module.exports['login'] = function(user, callback){
+    UserModel.find({email: user.email}, (err,result)=>{
+        if(err){
+            callback(err)
+        }
+        else{
+            callback(null,result)
+            if(result.length == 0){
+                callback("Invalid credentials!", null);
+            }
+            else{
+                const valid = await bcrypt.compare(user.password, result[0].password)
+
+                if(!valid){
+                    callback("Invalid credentials!", null);
+                    return;
+                }
+
+                callback(null, result[0]);
+            }
+        }
+    })
+}
+
+module.exports['register'] = function (user, callback) {
     user['userId'] =uuidv4()
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+
     UserModel.create([user]).then(result => {
         callback(null, result[0])
     }).catch(err => {

@@ -18,6 +18,7 @@ module.exports['updateMealPlanner'] = function(userId, updateMap, callback){
     MealPlannerModel.findOneAndUpdate(
         {userId: userId},
         updateMap,
+        {new: true},
         (err, result) => {
             if(err){
                 callback(err)
@@ -35,7 +36,8 @@ module.exports['getMealPlanner'] = function(userId, callback){
             callback(err)
         }
         else{
-            callback(null,result[0])
+            if(result.length == 0) callback("User not exist!")
+            else callback(null,result[0])
         }
     })
 }

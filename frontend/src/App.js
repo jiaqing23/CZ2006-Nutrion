@@ -10,11 +10,12 @@ import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
 import SearchResult from './pages/SearchResult';
+import Profile from './pages/Profile'
 
 function App() {
   return (
     <div>
-      <MealPlanner/>
+      <Homepage />
     </div>
   );
 }
