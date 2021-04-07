@@ -24,8 +24,8 @@ module.exports['getUser'] = function(userId, callback){
     })
 }
 
-module.exports['login'] = function(user, callback){
-    UserModel.find({email: user.email}, (err,result)=>{
+module.exports['login'] = async function(user, callback){
+    UserModel.find({email: user.email}, async (err,result)=>{
         if(err){
             callback(err)
         }
@@ -48,7 +48,7 @@ module.exports['login'] = function(user, callback){
     })
 }
 
-module.exports['register'] = function (user, callback) {
+module.exports['register'] = async function (user, callback) {
     user['userId'] =uuidv4()
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
