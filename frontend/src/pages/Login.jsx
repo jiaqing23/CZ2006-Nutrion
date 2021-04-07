@@ -9,8 +9,24 @@ export default function Login() {
     const [password, setPassword] = useState("");
 
     const login = () => {
-        alert("This is your email: " + email + "\nThis is your password: " + password)
-        // Call Backend Logic
+        // alert("This is your email: " + email +
+        //         "\nThis is your password: " + password);
+
+        const form = { 
+            email: email,
+            password: password,
+        }
+
+        // Call API provided by Backend
+        // try{
+        //     const res = await axios.get('https://cz2006-nutrion.herokuapp.com/user/login', form);
+        //     console.log(res)
+        // }
+        // catch(err) {
+        //     console.log(err)
+        // }
+
+        // Redirect to HomePage
     }
 
     return (
