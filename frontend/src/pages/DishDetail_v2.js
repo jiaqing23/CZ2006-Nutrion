@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import salmon from '../assets/images/salmon.jpg';
+import salmon from '../assets/images/salmon2.jpg';
 import '../styles/DishDetail.css';
 import { faShoppingCart, faClock,faUsers } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@material-ui/core/Chip';
@@ -28,7 +28,7 @@ const BlackCheckbox = withStyles({
     },
   })(FormControlLabel)
 
-function DishDetail() {
+function DishDetail_v2() {
     const [state, setState] = React.useState({
         checked1: false,
         checked2: false,
@@ -45,11 +45,19 @@ function DishDetail() {
      return (
          <div>
              <div className="row first-dish-container">
-                <div className="col-md-2"></div>
-                <div className="col-md-8" style={{marginBottom: "100px"}}>
+                <div className="col-sm-1 col-md-2"></div>
+                <div className="col-sm-10 col-md-8">
                     <div className="row">
-                        <div className="col-md-6"><img className="DishDetailImg" src={salmon} alt="nthg"/></div>
-                        <div className="col-md-6">
+                        <div className="col-md-8">
+                            <img className="DishDetailImg" src={salmon} alt="nthg"/>
+                            <div className="row DishNutritionList">
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">120</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">22g</div><div className="nutrition-title d-flex justify-content-center">CARBS</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">15g</div><div className="nutrition-title d-flex justify-content-center">PROTEIN</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">12g</div><div className="nutrition-title d-flex justify-content-center">FATS</div></div>
+                                </div>
+                            </div>
+                        <div className="col-md-4">
                             <div className="DishDetail">
                                 <h2>Baked Salmon
                                      <FormControlLabel
@@ -66,12 +74,6 @@ function DishDetail() {
                                     <li><FontAwesomeIcon icon={faShoppingCart} className="fa-xs"/> 5 ingredients</li>
                                     <li><FontAwesomeIcon icon={faUsers} className="fa-xs"/> 2 pax</li>
                                 </ul>
-                                <div className="row DishNutritionList">
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">120</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">22g</div><div className="nutrition-title d-flex justify-content-center">CARBS</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">15g</div><div className="nutrition-title d-flex justify-content-center">PROTEIN</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">12g</div><div className="nutrition-title d-flex justify-content-center">FATS</div></div>
-                                </div>
                                 <div className="dishTags">
                                     <h5>Tags</h5>
                                     <div className="d-flex justify-content-left">
@@ -85,7 +87,7 @@ function DishDetail() {
                         </div>
                     </div>
                     <div className="Ingredient">
-                        <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Ingredients</h2>
+                        <h2 style={{fontWeight:"800px",margin:"10px"}}>Ingredients</h2>
                         <div className="ingredientList  d-flex flex-wrap justify-content-between">
                             <StyledFormControlLabel
                                 control={<BlackCheckbox checked={state.checkedG} 
@@ -131,7 +133,7 @@ function DishDetail() {
                         </div>
                     </div>
                     <div>
-                    <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Steps</h2>
+                    <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Directions</h2>
                     </div>
                     <DirectionsAccordian />
                     <DirectionsAccordian />
@@ -142,4 +144,4 @@ function DishDetail() {
      );
   }
   
-  export default DishDetail;
+  export default DishDetail_v2;

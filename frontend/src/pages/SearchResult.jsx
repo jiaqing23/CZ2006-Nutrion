@@ -1,58 +1,74 @@
+
 import '../styles/SearchResult.css';
 import React, {useEffect, useState} from 'react';
 //import logo from '../images/nutrion-black.png'
-import ShortRecipe from '../components/ShortRecipe';
+import RecipeGrid from '../components/RecipeGrid';
+import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 export default function SearchResult() {
     
-    //create empty array for the recipes
-    const [recipes, setRecipes] = useState([]);
+    const [recipeData, setRecipe] = useState(null);
+    const [query, setQuery] = useState('pasta');
+    const API_KEY = "07bdfcda764443ffbcf11862a56f70f5";
+    //const data = require("../assets/recipeData.json");
 
-    //create empty string for the search
-    const [search, setSearch] = useState('');
-
-    //create a state that submits itself only after clicking button
-    const [query, setQuery] = useState('chicken');
-
-    useEffect(() => {
-        getRecipes();
-    }, [query]);
-
-    //wait for the response of the api fetch call
-    const getRecipes = async () => {
-        const response = await fetch('');
-        const data = await response.json();
-        setRecipes(data.hits);
+    function handleChange(e) {
+        setQuery(e.target.value);
     }
 
-    //update search input based on the input of the search bar
-    const updateSearch = e => {
-        setSearch(e.target.value);
+    //use this only when using local json file
+    /*
+    function getRecipe() {
+        setRecipe(data);
     }
+    */
 
-    //run this function whenever the user submits the search query
-    const getSearch = e => {
-        e.preventDefault();
-        setQuery(search);
-        setSearch('');
+    //otherwise use this to get from api
+    function getRecipe() {
+        fetch(
+            'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + API_KEY + '&query=' + query
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            setRecipe(data);
+        })
+        .catch(() => {
+            console.log("error");
+        });
     }
     
+
+    
     return (
-        <div className="reg-container">
-            <form onSubmit={getSearch} classname="search-form">
-                <input classname="search-bar" type="text" value={search} onChange={updateSearch}/>
-                <button classname="search-button" type="submit">
-                    Search
-                </button>
-            </form>
-            {recipes.map(recipe => (
-                <ShortRecipe key = {recipe.recipe.label}
-                            title = {recipe.recipe.label} 
-                            calories = {recipe.recipe.calories}
-                            image = {recipe.recipe.image}
-                            ingredients={recipe.recipe.ingredients}
+        <div className="App">
+            <div class="form-inline searchInput" >
+                <div class="input-group">
+                <input
+                    key="random1"
+                    placeholder="Search for dishes"
+                    class="form-control search-form"
+                    onChange = {handleChange}
                 />
-            ))}
+                <span class="input-group-btn">
+                    <button class="btn btn-primary search-btn"  onClick={getRecipe}>
+                    <FontAwesomeIcon icon={faSearch}/> 
+                    </button>
+                </span>
+                </div>
+            </div>
+            {recipeData && <RecipeGrid recipeData={recipeData} />}
         </div>
     );
+
 }
