@@ -15,33 +15,20 @@ import MealPlanResult from './pages/MealPlanResult';
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div>
-      
-      <Navigation />
-      {/* <Homepage /> */}
-      {/* <Registration /> */}
-      <DishDetail />
-      <Footer />
-      {/* <Login /> */}
-      {/* <Profile /> */}
-    </div>
-=======
     <>
       <div>
         {/*<Navigation /> */}
         {/* <Profile /> */}
         {/*<MealPlanner />*/}
-        {/* <Homepage /> */}
+         <Homepage /> 
         {/* <Registration /> */}
-        {/* <DishDetail /> 
+        {/* <DishDetail /> */}
         {/* <Login /> */}
          {/* <SearchResult /> */}
-          <MealPlanResult />
+         {/* <MealPlanResult />*/}
       </div>
       <Footer />
     </>
->>>>>>> 1d15abcac4129d52da8dc1a4fb310e34f757a712
   );
 }
 
