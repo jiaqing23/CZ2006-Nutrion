@@ -10,38 +10,26 @@ import MealPlanner from './components/MealPlanner';
 import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
+import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div>
-      
-      <Navigation />
-      {/* <Homepage /> */}
-      {/* <Registration /> */}
-      <DishDetail />
-      <Footer />
-      {/* <Login /> */}
-      {/* <Profile /> */}
-    </div>
-=======
     <>
       <div>
-        {/*<Navigation /> */}
+        <Navigation />
         {/* <Profile /> */}
-        {/*<MealPlanner />*/}
-         <Homepage /> 
+        <MealPlanner />
+        {/* <Homepage />  */}
         {/* <Registration /> */}
-        {/* <DishDetail /> 
+        {/* <DishDetail_v2 />  */}
         {/* <Login /> */}
         {/* <SearchResult /> */}
-          <MealPlanResult />
+        {/* <MealPlanResult /> */}
       </div>
       <Footer />
     </>
->>>>>>> 1d15abcac4129d52da8dc1a4fb310e34f757a712
   );
 }
 
