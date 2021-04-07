@@ -11,6 +11,7 @@ import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
 import SearchResult from './pages/SearchResult';
+import MealPlanResult from './pages/MealPlanResult';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
         {/* <Registration /> */}
         {/* <DishDetail /> */}
         {/* <Login /> */}
-         <SearchResult /> 
+        {/* <SearchResult /> */}
+         <MealPlanResult />
       </div>
       <Footer />
     </>

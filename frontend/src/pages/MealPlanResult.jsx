@@ -1,8 +1,7 @@
-
-import '../styles/SearchResult.css';
+import '../styles/MealPlanResult.css';
 import React, {useEffect, useState} from 'react';
+import MealList from "../components/MealList";
 //import logo from '../images/nutrion-black.png'
-import RecipeGrid from '../components/RecipeGrid';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,23 +12,23 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
 
-export default function SearchResult() {
+export default function MealPlanResult() {
     
-    const [recipeData, setRecipe] = useState(null);
-    const [query, setQuery] = useState('pasta');
+    const [mealData, setMealData] = useState(null);
+    const [calories, setCalories] = useState(2000);
     const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
 
     function handleChange(e) {
-        setQuery(e.target.value);
+        setCalories(e.target.value);
     }
 
-    function getRecipe() {
+    function getMealData() {
         fetch(
-            'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + API_KEY + '&query=' + query
+            'https://api.spoonacular.com/mealplanner/generate?apiKey=' + API_KEY + '&timeFrame=day&targetCalories=' + calories
         )
         .then((response) => response.json())
         .then((data) => {
-            setRecipe(data);
+            setMealData(data);
         })
         .catch(() => {
             console.log("error");
@@ -40,10 +39,10 @@ export default function SearchResult() {
     return (
         <div className="App">
             <section className="controls">
-                <input placeholder = "query (e.g. 2000)" onChange = {handleChange}/>
+                <input type = "number" placeholder = "Calories (e.g. 2000)" onChange = {handleChange}/>
             </section>
-            <button onClick={getRecipe}>Get Meals</button>
-            {recipeData && <RecipeGrid recipeData={recipeData} />}
+            <button onClick={getMealData}>Get Daily Meal Plan</button>
+            {mealData && <MealList mealData={mealData} />}
         </div>
     );
 

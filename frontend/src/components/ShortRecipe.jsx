@@ -1,100 +1,27 @@
-import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React, {useState, useEffect} from 'react';
+import '../styles/SearchResult.css';
 
+export default function ShortRecipe({recipe}) {
+    
+    const [imageUrl, setImageUrl] = useState("");
+    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      maxWidth: 325,
-      margin: '15px, 0',
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
-    },
-  }));
+    function handleImage(recipe) {
+        setImageUrl(recipe.image);
+    }
 
-
-const ShortRecipe = ({ title, calories, image, ingredients}) => {
-
-    const classes = useStyles();
-    const [expanded, setExpanded] = useState(false);
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
+    useEffect(() => {
+        handleImage(recipe);
+    })
+    
     return (
-        <div>
-            <Card className={classes.root}>
-      <CardHeader
-        
-       
-        title={title}
-        subheader={calories}
-      />
-      <CardMedia
-        className={classes.media}
-        image={image}
-        title={title}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <div>Ingredients</div>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <article>
+            <h1>{recipe.title}</h1>
+            <img src={imageUrl} alt="recipe" />
+            <ul className="instructions">
+                <li>Calories: </li>
+            </ul>
 
-          {ingredients.map((ingredient) => (
-                    <Typography paragraph>{ingredient.text}</Typography>
-                ))}
-        </CardContent>
-      </Collapse>
-    </Card>
-          { /*  <p>{title}</p>
-            <p>{calories}</p>
-            <img src={image} alt='' />
-            <ol>
-                {ingredients.map((ingredient) => (
-                    <li>{ingredient.text}</li>
-                ))}
-                </ol> */}
-        </div>
-    );
-};
-
-export default ShortRecipe;
+        </article>
+    )
+}
