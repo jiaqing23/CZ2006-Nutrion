@@ -12,6 +12,7 @@ import MealPlanner from './components/MealPlanner';
 import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail from './pages/DishDetail';
+import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
 
