@@ -27,6 +27,12 @@ const BlackCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
+const StyledFormControlLabel = withStyles({
+  label: {
+      fontFamily: "Abhaya Libre",
+  },
+})(FormControlLabel)
+
 export default function ActionsInAccordionSummary(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
