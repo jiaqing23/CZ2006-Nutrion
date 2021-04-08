@@ -25,9 +25,7 @@ function MealPlanner() {
     const [selected, setSelected] = useState("mealplan");
     const general = useContext(generalContext);
     const user = useContext(userContext);
-    const [state, setState] = React.useState({
-        buttonState: '',
-    });
+
     const handleClick = (e)=> {
         setState({buttonState: 'loading'})
         // make asynchronous call
