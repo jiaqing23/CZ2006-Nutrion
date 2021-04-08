@@ -61,15 +61,15 @@
     padding: 0px;
     overflow-x: hidden; 
 } */
-
+/* 
 .search-container{
     height:80vh;
 }
 .searchImg{
     width:100%;
-    height:80vh;
+    height:100vh;
     object-fit: cover;
-}
+} */
 
 .searchBanner{
     position:relative;
