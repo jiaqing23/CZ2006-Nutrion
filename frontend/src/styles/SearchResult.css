@@ -1,7 +1,11 @@
 body {
     font-family: 'Abhaya Libre', serif;
     font-style: normal;
+}
 
+.search-main {
+    padding-top: 150px;
+    padding-bottom: 100px;
 }
 
 .reg-container {
@@ -102,6 +106,11 @@ form p {
     z-index: 1;
     width:50%;
     margin-left: 10vw;
+}
+
+.radio-input {
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 @media screen and (max-width: 500px) {

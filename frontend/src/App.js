@@ -38,6 +38,8 @@ function App() {
                 <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
                 <Route path="/dish"><Navigation /><DishDetail /></Route>
                 <Route path="/planner"><Navigation /><MealPlanner /></Route>
+                <Route path="/searchDish"><Navigation /><SearchResult /></Route>
+                <Route path="/searchMealPlan"><Navigation /><MealPlanResult /></Route>
                 <Route path="/"><Navigation /><Homepage /></Route>
             </Switch>
           </div>
