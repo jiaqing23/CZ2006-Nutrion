@@ -34,6 +34,7 @@ export default function Registration() {
         try{
             const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/register', form);
             console.log(res);
+            // <Redirect to="/login" />
             // Redirect to Login Page
         }
         catch(error) {

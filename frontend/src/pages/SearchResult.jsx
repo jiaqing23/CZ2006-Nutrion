@@ -8,6 +8,7 @@ import {FaSearch} from 'react-icons/fa';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
@@ -28,7 +29,9 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-export default function SearchResult() {
+  
+  
+  export default function SearchResult() {
 
     const general = useContext(generalContext);
     
@@ -76,7 +79,7 @@ export default function SearchResult() {
     return (
         <div className="App search-main">
             <div class="form-inline searchInput" >
-                <div class="input-group">
+                <div class="input-group dish-searchbar">
                     <input
                         key="random1"
                         type="text"
@@ -90,23 +93,23 @@ export default function SearchResult() {
                         <FaSearch/>
                         </button>
                     </span>
-                </div>
-            
-                <div class="form-inline searchInput radio-input" >
-                    <InputLabel htmlFor="age-native-simple">Diet</InputLabel>
-                    <Select
-                        native
-                        onChange={handleChange}
-                        inputProps={{
-                            name: 'age',
-                            id: 'age-native-simple',
-                        }}
-                        >
-                        <option aria-label="None" value="">None</option>
-                        <option value={10}>Vegan</option>
-                        <option value={20}>Paleo</option>
-                        <option value={30}>Ketogenic</option>
-                    </Select>
+                    
+                    {/* <div className="query-filter" >
+                        <FormControl>
+                            <FormHelperText>Diet</FormHelperText>
+                            <Select
+                                value={query}
+                                onChange={handleChange}
+                                displayEmpty
+                                className
+                                inputProps={{ 'aria-label': 'Without label' }}
+                            >
+                            <MenuItem value={10}>Protein</MenuItem>
+                            <MenuItem value={20}>Gluten-Free</MenuItem>
+                            <MenuItem value={30}>Energy</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </div> */}
                 </div>
             </div>
             {(general.generalState.dishes.length == 0 || searching)?<Loading/>:

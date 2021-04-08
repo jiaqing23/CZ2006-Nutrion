@@ -2,8 +2,11 @@ import React, {useState, useContext, useEffect, useReducer} from 'react'
 import { GiPieChart, GiHotMeal } from "react-icons/gi";
 import async from 'async';
 import axios from 'axios';
+import ProgressButton from 'react-progress-button'
 
-import '../styles/MealPlanner.css'
+import '../styles/MealPlanner.css';
+import '../../node_modules/react-progress-button/react-progress-button.css'
+import '../styles/CustomProgressButton.css';
 
 import MealPlannerBoard from './MealPlannerBoard'
 import Button from './Button'
@@ -22,6 +25,17 @@ function MealPlanner() {
     const [selected, setSelected] = useState("mealplan");
     const general = useContext(generalContext);
     const user = useContext(userContext);
+    const [state, setState] = React.useState({
+        buttonState: '',
+    });
+    const handleClick = (e)=> {
+        setState({buttonState: 'loading'})
+        // make asynchronous call
+        setTimeout(() => {
+          setState({buttonState: 'success'})
+        }, 3000)
+      };
+//Loading,success and error state
 
     //Meal planner board state
     const [state, setState] = useState([[], [], [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]);
@@ -162,7 +176,7 @@ function MealPlanner() {
             <div class="right">
                 <div class="button-row justify-content-end">
                     <div class="d-flex flex-row-reverse">
-                        <Button text="Save" onClick={saveMealPlanToDatabase}/>
+                        <ProgressButton onClick={handleClick} state={state.buttonState}>Save</ProgressButton>
                         <Button text="Print" />
                     </div>
                 </div>
