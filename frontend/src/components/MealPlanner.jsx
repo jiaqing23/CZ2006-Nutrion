@@ -86,7 +86,7 @@ function MealPlanner() {
                 })
             })
             setState(newState);
-            console.log(newState);
+             console.log(newState);
             forceUpdate();
         }
     }, []);
