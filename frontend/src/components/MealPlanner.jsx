@@ -35,12 +35,11 @@ function MealPlanner() {
         setSelected("nutrient");
     }
 
-
     return (
         <div class="wrapMP">
             <div class="left">
                 <h4>Favourite Dishes</h4>
-                <div className="FavouriteList d-flex flex-wrap justify-content-center">
+                <div className="FavouriteList justify-content-center">
                 {general.generalState.favouriteList.map((dish) => (<FavouriteComponent recipe={dish}/>))}
             </div>
             </div>
