@@ -41,14 +41,27 @@ body {
     padding: 0 25%;
 }
 
-.reg-form .form-group {
-    padding-top: 5%;
-}
-
 .reg-form .form-control {
     width: 30vw;
 }
 
-form p {
-    margin-top: 3%;
+.reg-container .reg-form .register-button {
+    margin-top: 15px;
+    padding: 0;
+}
+
+.reg-container .reg-form .register-button button {
+    width: 150px;
+}
+
+.reg-container .reg-form .register-button button:hover {
+    background-color: white;
+    color: black;
+}
+
+.reg-container .error-message {
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    color: red;
 }
