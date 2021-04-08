@@ -36,6 +36,22 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    healthCondition: {
+        type: [String],
+        default: []
+    },
+    lackingNutrient: {
+        type: [String],
+        default: []
+    },
+    height:{
+        type: Number,
+    },
+    weight:{
+        type: Number
+    }
+
+
 })
 
 userSchema.plugin(uniqueValidator)
