@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     
     const [searchResult, setSearchResult] = useState([]);
     const [query, setQuery] = useState("");
+    const [searching, setSearching] = useState(false);
 
     
     function handleChange(e) {
@@ -56,8 +57,9 @@ const useStyles = makeStyles((theme) => ({
     }, []);
 
 
-    async function getRecipe() {
+    async function getRecipe(e) {
         console.log("Fetching search result...")
+        setSearching(true);
         try{
             let dishes = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/dish', {
                 params:{
@@ -70,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
         catch(err){
             console.log(err.response)
         }
+        setSearching(false);
     }
     
     
@@ -109,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
                     </div> */}
                 </div>
             </div>
-            {(general.generalState.dishes.length == 0)?<Loading/>:
+            {(general.generalState.dishes.length == 0 || searching)?<Loading/>:
             ((searchResult.length > 0)?<RecipeGrid recipeData={searchResult} />:
                         <RecipeGrid recipeData={general.generalState.dishes} />)}
         </div>

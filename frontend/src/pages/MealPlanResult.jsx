@@ -1,44 +1,56 @@
 import '../styles/MealPlanResult.css';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import MealList from "../components/MealList";
-//import logo from '../images/nutrion-black.png';
+import async from 'async';
+import axios from 'axios';
 import {FaSearch} from 'react-icons/fa';
 
+import Loading from './Loading';
 
-
+import { generalContext } from '../contexts';
 
 export default function MealPlanResult() {
-    
-    const [mealData, setMealData] = useState(null);
+    const general = useContext(generalContext);
+
+    const [searchResult, setSearchResult] = useState([]);
     const [calories, setCalories] = useState(2000);
-    const API_KEY = "07bdfcda764443ffbcf11862a56f70f5";
-    const data = require("../assets/mealData.json");
+    const [searching, setSearching] = useState(false);
 
     function handleChange(e) {
         setCalories(e.target.value);
     }
+    
+    useEffect(async () => {
+        if(general.generalState.mealPlans.length == 0){
+            console.log("Fetching data from API for mealplan page!")
+            let mealPlans = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/mealPlan', {
+                params:{
+                    number: 15
+                }
+            });
+            general.setGeneralState({...general.generalState, mealPlans: mealPlans.data})
+            console.log(mealPlans.data)
+        }
+        
+    }, []);
 
-    //use this only when using local json file
-    
-    function getMealData() {
-        setMealData(data);
+    const getMealData = async (e) => {
+        setSearching(true);
+        console.log("Fetching search result...")
+        try{
+            let mealPlans = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/mealPlan', {
+                params:{
+                    number: 10,
+                    calories: calories
+                }
+            });
+            setSearchResult(mealPlans.data);
+        }
+        catch(err){
+            console.log(err.response)
+        }
+        setSearching(false);
     }
-    
-    
-    /*
-    function getMealData() {
-        fetch(
-            'https://api.spoonacular.com/mealplanner/generate?apiKey=' + API_KEY + '&timeFrame=day&targetCalories=' + calories
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            setMealData(data);
-        })
-        .catch(() => {
-            console.log("error");
-        });
-    }
-    */
 
     
     return (
@@ -59,7 +71,10 @@ export default function MealPlanResult() {
                 </span>
                 </div>
             </div>
-            {mealData && <MealList mealData={mealData} />}
+            {(general.generalState.mealPlans.length == 0 || searching)?<Loading/>:
+            ((searchResult.length > 0)?<MealList mealPlans={searchResult} />:
+                            <MealList mealPlans={general.generalState.mealPlans} />)}
+
         </div>
     );
 

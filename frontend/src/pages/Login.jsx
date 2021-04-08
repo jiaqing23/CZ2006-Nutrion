@@ -1,15 +1,17 @@
 import axios from 'axios';
 import async from 'async';
-import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import React, {useState, useContext} from 'react';
+import {Link, Redirect} from "react-router-dom";
 import '../styles/Login.css';
 import logo from '../assets/images/nutrion-black.png'
 
-export default function Login() {
+
+export default function Login(props) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
 
     const login = async(e) => {
         e.preventDefault();
@@ -23,8 +25,9 @@ export default function Login() {
 
         // Call API provided by Backend
         try{
-            const res = await axios.get('https://cz2006-nutrion.herokuapp.com/user/login', form);
-            console.log(res)
+            const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/login', form);
+            console.log(res.data);
+            props.setUser(res.data);
             // Redirect to HomePage, Login Button > Logout Button in NavBar, update generalStates
         }
         catch(error) {
