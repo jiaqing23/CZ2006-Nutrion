@@ -49,6 +49,23 @@ body {
     width: 30vw;
 }
 
-form p {
-    margin-top: 3%;
+.log-container .login-button {
+    padding: 0;
+    margin-top: 15px;
+}
+
+.log-container .log-form .login-button button {
+    width: 150px;
+}
+
+.log-container .log-form .login-button button:hover {
+    background-color: white;
+    color: black;
+}
+
+.log-container .error-message {
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    color: red;
 }
