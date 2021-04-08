@@ -13,7 +13,6 @@ function Navbar() {
                     <Link to="/">
                         <img className="logo" src={logo} alt="" />
                     </Link>
-<<<<<<< HEAD
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
                     <span class="navbar-toggler-icon"></span>
@@ -43,16 +42,6 @@ function Navbar() {
                                     <li><a class="dropdown-item" href="#">Item</a></li> */}
                         {/* </ul>
                 </li> */}
-=======
-                </div>
-                <div className="nav-item">
-                    <ul>
-                        <li><Link to="/login" className="nav-link">Login</Link></li>
-                        <li><Link to="/profile" className="nav-link">Profile</Link></li> 
-                        <li><Link to="/planner" className="nav-link">Planner</Link></li>
-                        <li><Link to="/mealplans" className="nav-link">Meal Plans</Link></li>
-                        <li><Link to="/dish" className="nav-link">Dishes</Link></li>
->>>>>>> a9afc0fc816b85fb5a3df08b02d9428b695579bb
                     </ul>
                 </div>
             </div>

@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 import MealPlanner from './components/MealPlanner';
 import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
-import DishDetail from './pages/DishDetail';
 import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
@@ -48,21 +47,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-      <Router>
-          <div>
-            <Switch>
-                <Route path="/register"><Registration /></Route>
-                <Route path="/login"><Login /></Route>
-                <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
-                <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
-                <Route path="/planner"><Navigation /><MealPlanner /></Route>
-                <Route path="/"><Navigation /><Homepage /></Route>
-            </Switch>
-          </div>
-      </Router>
-      <Footer />
-=======
       <div>
         <dishContext.Provider value={dishes}>
           <mealPlansContext.Provider value={mealplans}>
@@ -82,7 +66,6 @@ function App() {
         </dishContext.Provider>
         <Footer />
       </div>
->>>>>>> a9afc0fc816b85fb5a3df08b02d9428b695579bb
     </>
   );
 }
