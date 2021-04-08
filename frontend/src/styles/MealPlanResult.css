@@ -33,10 +33,10 @@
 
 
 
-a:hover {
+/* a:hover {
     cursor: pointer;
-    background-color:7776AB; 
-} 
+    background-color:#7776AB; 
+}  */
 
 
 @media only screenn and (max-width: 550px) {
@@ -63,7 +63,7 @@ a:hover {
 } */
 
 .search-container{
-    height:75vh;
+    height:80vh;
 }
 .searchImg{
     width:100%;
@@ -82,7 +82,7 @@ a:hover {
     font-family: 'Abhaya Libre', serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     z-index: 10;
     width:50%;
     text-align: center;

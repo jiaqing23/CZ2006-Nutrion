@@ -1,5 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Link} from "react-router-dom";
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import '../styles/ShortRecipe.css';
 
@@ -19,8 +23,7 @@ export default function ShortRecipe(props) {
                     <ul className="instructions">
                         <li>Calories: {Math.round(parseFloat(props.recipe.nutrition.calories))} kcal</li>
                     </ul>
-                    <button className="recipeButton">View Meal</button>
-                    <button className="recipeButton">Add to Favourites</button>
+
                 </div>
             </Link>
         </div>

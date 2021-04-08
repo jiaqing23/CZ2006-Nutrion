@@ -1,5 +1,5 @@
 .first-dish-container{
-    margin-top:2vh;
+    margin: 50px 0;
 }
 
 .DishDetail{
@@ -13,7 +13,10 @@
 .DishDetail h2{
     font-size: 36px;
     font-weight: 800;
-    margin-bottom:0;
+}
+
+.Ingredients h2 {
+    margin: 0;
 }
 
 .DishDetail p{

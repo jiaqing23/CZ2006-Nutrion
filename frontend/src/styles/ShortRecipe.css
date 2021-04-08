@@ -1,4 +1,4 @@
-.recipeBox2{
+.short-recipe{
     padding: 20px;
     width: fit-content;
     height: fit-content;
@@ -8,10 +8,10 @@
     font-size: 16px;
     text-align: center;
     cursor:pointer;
-    height: 450px;
+    height: max-content;
 }
 
-.recipeBox2:hover {
+.short-recipe:hover {
     background: transparent;
     display: block;
     text-decoration: none;
@@ -38,7 +38,7 @@
 .recipeBox2 li{
     margin-top: 10px;
     list-style-type: none;
-    text-align: left;
+    text-align: center;
 }
 
 .short-recipe .recipeImg{
@@ -64,6 +64,15 @@
     color: black;
     border-radius: 5px;
     border-width: 8px;
+}
+
+.short-recipe a {
+    color:black;
+}
+
+.heart-container {
+    margin: 0;
+    padding: 0;;
 }
 
 

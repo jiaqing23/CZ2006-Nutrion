@@ -4,7 +4,7 @@ body {
 }
 
 .search-main {
-    padding-top: 100px;
+    padding-top: 70px;
     padding-bottom: 100px;
 }
 
@@ -112,6 +112,16 @@ form p {
 
 .input-group-btn {
     display: inline-block;
+}
+
+/* .query-filter {
+    margin: 0;
+    padding: 0;
+    margin-left: 100px;
+} */
+
+.dish-searchbar {
+    margin-bottom: 30px;
 }
 
 @media screen and (max-width: 500px) {
