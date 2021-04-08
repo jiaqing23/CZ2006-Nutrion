@@ -150,11 +150,11 @@ export default function CustomizedHook(props) {
     setAnchorEl,
   } = useAutocomplete({
     id: 'customized-hook-demo',
-    // defaultValue: type=="nutrient"?nutrients:
-    // type=="condition"?conditions:[{}],
+    // defaultValue: type==="nutrient"?nutrients:
+    // type==="condition"?conditions:[{}],
     multiple: true,
-    options: type == "nutrient"?nutritionalElements:
-    type == "condition"?healthConditions:[{}],
+    options: type === "nutrient"?nutritionalElements:
+    type === "condition"?healthConditions:[{}],
     getOptionLabel: (option) => option.title,
     onChange: (e, value) => {
       let list = value.map(a => a.title);

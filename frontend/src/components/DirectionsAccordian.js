@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { grey } from "@material-ui/core/colors";
 import { withStyles } from '@material-ui/core/styles';
 
+
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -32,7 +33,7 @@ const StyledFormControlLabel = withStyles({
   },
 })(FormControlLabel)
 
-export default function ActionsInAccordionSummary() {
+export default function ActionsInAccordionSummary(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     checked1: false,
@@ -61,7 +62,7 @@ export default function ActionsInAccordionSummary() {
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<BlackCheckbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={props.instruction.step}
           />
         </AccordionSummary>
         <AccordionDetails>

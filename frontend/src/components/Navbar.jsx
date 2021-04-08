@@ -31,17 +31,7 @@ function Navbar() {
                         <li class="nav-item">
                             <Link to="/login" className="nav-link">Login</Link>
                         </li>
-                        {/* <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
-                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="#">Item</a></li>
-                                <li><a class="dropdown-item" href="#">Item</a></li>
-                                <li>
-                                    <hr class="dropdown-divider"/>
-                        </li>
-                                    <li><a class="dropdown-item" href="#">Item</a></li> */}
-                        {/* </ul>
-                </li> */}
+                    
                     </ul>
                 </div>
             </div>

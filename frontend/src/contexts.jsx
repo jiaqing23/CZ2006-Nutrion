@@ -1,7 +1,8 @@
 import React, { createContext } from 'react';
 
-const userContext = createContext({user: {}});
-const dishContext = createContext({dish: {}});
-const mealPlansContext = createContext({mealplans: {}});
+const userContext = createContext({});
+//const dishContext = createContext({});
+//const mealPlansContext = createContext({});
+const generalContext = createContext({});
 
-export { userContext, dishContext, mealPlansContext };
+export { userContext, generalContext };

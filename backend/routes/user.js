@@ -21,17 +21,6 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:userId', (req, res) => {
-    const {userId} = req.params;
-    UserController.register((err, result) => {
-        if(err){
-            return res.status(500).send({ message: `${err}`})
-        }
-        else{
-            return res.status(200).send(result)
-        }
-    })
-})
 
 router.get('/login', [
         check('email', 'Email is required').isEmail(),
@@ -84,7 +73,7 @@ router.post('/register',
             session.startTransaction()
             async.waterfall([
                 function(callback){
-                    UserController.addUser(
+                    UserController.register(
                         user, 
                         (err, result) => {
                         if(err){
@@ -133,7 +122,7 @@ router.post('/register',
                 {
                     session.commitTransaction().then(() => {
                         session.endSession()
-                        return res.status(200).send(result)
+                        return res.status(200).send({"userId":result})
                         
                     })
                 }
