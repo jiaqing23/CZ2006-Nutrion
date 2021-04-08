@@ -27,12 +27,6 @@ const BlackCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const StyledFormControlLabel = withStyles({
-  label: {
-    fontFamily:"Abhaya Libre",
-  },
-})(FormControlLabel)
-
 export default function ActionsInAccordionSummary(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -66,49 +60,16 @@ export default function ActionsInAccordionSummary(props) {
           />
         </AccordionSummary>
         <AccordionDetails>
-          <div className="ingredientList  d-flex flex-wrap justify-content-between">
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                style={{ fontFamily: 'Abhaya Libre' }}
-                name="checked1" />}
-              label="2 pound side of salmon" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked2" />}
-              label="5 sprigs fresh rosemary" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked3" />}
-              label="2 small lemons" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked4" />}
-              label="4 cloves garlic" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked5" />}
-              label="Additional chopped fresh herbs" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked6" />}
-              label="2 tablespoons extra virgin olive oil" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked7" />}
-              label="1 tsp Kosher salt" />
-            <StyledFormControlLabel
-              control={<BlackCheckbox checked={state.checkedG}
-                onChange={handleChange}
-                name="checked7" />}
-              label="¼ teaspoon ground black pepper" />
-          </div>
+          <Typography color="textSecondary">
+            {
+              props.instruction.ingredients.map((ingredient) =>
+              (
+                <StyledFormControlLabel
+                  control={<BlackCheckbox style={{ fontFamily: 'Abhaya Libre' }} />}
+                  label={ingredient} />
+              ))
+            }
+          </Typography>
         </AccordionDetails>
       </Accordion>
 

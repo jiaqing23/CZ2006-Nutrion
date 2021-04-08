@@ -21,7 +21,7 @@
 
 .favrecipeBox h2{
     max-width: 100%;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 800;
     margin-bottom:0;
 }
@@ -29,6 +29,7 @@
 .favrecipeBox p{
     max-width: 100%;
     font-weight: 400;
+    font-size: 12px;
 }
 
 .favrecipeImg{

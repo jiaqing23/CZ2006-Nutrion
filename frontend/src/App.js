@@ -26,7 +26,8 @@ function App() {
         height: "180cm",
         weight: "63kg",
         conditions: ["Heart Disease", "Diabetes", "Asthma"],
-        nutrients: ["Vitaminc C", "Protein", "Water"]
+        nutrients: ["Vitaminc C", "Protein", "Water"],
+        userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
     });
 
     const [generalState, setGeneralState] = useState({
@@ -35,6 +36,8 @@ function App() {
         homePageMealPlans: [],
         dishes: [],
         mealPlans: [],
+        favouriteList: [],
+        mealPlanner: []
     })
 
 

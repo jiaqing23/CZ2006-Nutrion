@@ -10,8 +10,6 @@ import { generalContext } from '../contexts';
 
 function Homepage() {
 
-    const [dishes, setDishes] = useState([]);
-    const [mealplans, setMealPlans] = useState([]);
     const general = useContext(generalContext);
 
     useEffect(async () => {
