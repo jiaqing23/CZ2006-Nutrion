@@ -5,13 +5,12 @@
 }
 
 .meal-plan-main {
-    padding-top: 150px;
-    padding-bottom: 100px;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 
-
-.form-control {
+.meal-plan-main .form-control {
     text-align: center;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -29,9 +28,7 @@
 }
 
 .instructions {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    padding-top: 1rem;
+    font-size: 1.3rem;
 }
 
 
@@ -66,7 +63,7 @@ a:hover {
 } */
 
 .search-container{
-    height:80vh;
+    height:75vh;
 }
 .searchImg{
     width:100%;

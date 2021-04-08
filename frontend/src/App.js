@@ -13,6 +13,7 @@ import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
+import Loading from './pages/Loading'
 
 import { userContext, generalContext } from './contexts';
 
@@ -50,7 +51,9 @@ function App() {
                             <Route path="/register"><Registration /></Route>
                             <Route path="/login"><Login /></Route>
                             <Route path="/profile"><Navigation /><Profile /></Route>
-                            <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
+                            <Route path="/recipe"><Navigation /><DishDetail_v2 /></Route>
+                            <Route path="/dish"><Navigation /><SearchResult /></Route>
+                            <Route path="/mealplan"><Navigation /><MealPlanResult /></Route>
                             <Route path="/planner"><Navigation /><MealPlanner /></Route>
                             <Route path="/"><Navigation /><Homepage /></Route>
                         </Switch>

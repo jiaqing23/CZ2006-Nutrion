@@ -29,7 +29,7 @@ const BlackCheckbox = withStyles({
 
 const StyledFormControlLabel = withStyles({
   label: {
-    fontFamily:"Abhaya Libre",
+      fontFamily: "Abhaya Libre",
   },
 })(FormControlLabel)
 

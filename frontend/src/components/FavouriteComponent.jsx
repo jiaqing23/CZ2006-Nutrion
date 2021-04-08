@@ -11,7 +11,7 @@ export default function FavouriteComponent(props) {
             <div className="col-6">
                 <div className="favrecipedetails">
                     <h2>{props.recipe.title}</h2>
-                    <p>The total calories is {Math.round(parseFloat(props.recipe.nutrition.calories))}. 
+                    <p>The total calories is {Math.round(parseFloat(props.recipe.nutrition.calories))} kcal. 
                     Total time taken is {props.recipe.readyInMinutes} minutes.</p>
                 </div>
             </div>

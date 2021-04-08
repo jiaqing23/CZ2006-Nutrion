@@ -1,31 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {Link} from "react-router-dom";
+
 import '../styles/ShortRecipe.css';
 
-export default function ShortRecipe({recipe}) {
-    
-    const [imageUrl, setImageUrl] = useState("");
-    const API_KEY = "3b7e0256fa5446b997301abd6552d9ad";
+import { generalContext } from '../contexts';
 
-    function handleImage(recipe) {
-        setImageUrl(recipe.image);
-    }
+export default function ShortRecipe(props) {
+    const general = useContext(generalContext);
 
-    useEffect(() => {
-        handleImage(recipe);
-    })
-    
     return (
         <div className="short-recipe">
-        <div className="recipeBox2">
-            <img className="recipeImg" src={imageUrl} alt="recipe" />
-            <h2 className="recipeTitle">{recipe.title}</h2>
-            <ul className="instructions">
-                <li>Calories: </li>
-            </ul>
-            <button className="recipeButton">View Meal</button>
-            <button className="recipeButton">Add to Favourites</button>
+            <Link to={{pathname:'/recipe'}} className="dish-anchor">
+                <div className="recipeBox2" onClick={()=>{
+                        general.setGeneralState({...general.generalState, selectedDish: props.recipe});
+                    }}>
+                    <img className="recipeImg" src={props.recipe.image} alt="recipe" />
+                    <h2 className="recipeTitle">{props.recipe.title}</h2>
+                    <ul className="instructions">
+                        <li>Calories: {Math.round(parseFloat(props.recipe.nutrition.calories))} kcal</li>
+                    </ul>
+                    <button className="recipeButton">View Meal</button>
+                    <button className="recipeButton">Add to Favourites</button>
+                </div>
+            </Link>
         </div>
-    </div>
     )
 }
 

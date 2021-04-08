@@ -20,16 +20,16 @@ export default function Meal({meal}) {
     }, [meal.id])
     
     return (
-        <div>
-        <div className="recipeBox">
-            <h2>{meal.title}</h2>
-            <img className="recipeImg" src={imageUrl} alt="recipe" />
-            <ul className="instructions">
-                <li>Preparation time: {meal.readyInMinutes} minutes</li>
-                <li>Number of servings: {meal.servings}</li>
-            </ul>
-            <a href={meal.sourceUrl}>Go to Recipe</a>
-        </div>
+        <div className="meal-container">
+            <div className="recipeBox">
+                <img className="recipeImg" src={imageUrl} alt="recipe" />
+                <h2>{meal.title}</h2>
+                <ul className="instructions">
+                    <li>Preparation time: {meal.readyInMinutes} minutes</li>
+                    <li>Number of servings: {meal.servings}</li>
+                </ul>
+                <a href={meal.sourceUrl}>Go to Recipe</a>
+            </div>
         </div>
     )
 }

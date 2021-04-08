@@ -1,7 +1,13 @@
 body {
     font-family: 'Abhaya Libre', serif;
     font-style: normal;
+}
 
+.background-container {
+    background-image: url(../assets/images/registration-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .reg-container {
@@ -12,10 +18,6 @@ body {
     padding-bottom: 5%;
     text-align: center;
     
-    background-image: url(../assets/images/registration.jpg);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 65%;
 }
 
 .card-title {

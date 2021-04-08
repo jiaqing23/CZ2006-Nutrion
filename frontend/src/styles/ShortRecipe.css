@@ -1,6 +1,5 @@
 .recipeBox2{
     padding: 20px;
-    padding-bottom: 30px;
     width: fit-content;
     height: fit-content;
     float:left;
@@ -9,16 +8,26 @@
     font-size: 16px;
     text-align: center;
     cursor:pointer;
+    height: 450px;
+}
+
+.recipeBox2:hover {
+    background: transparent;
+    display: block;
+    text-decoration: none;
+    background-color: #fffef6;
+    border: black solid 0.5px;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 .recipeBox2 h2{
-    width:200px;
-    font-size: 18px;
+    width:300px;
+    font-size: 20px;
     font-weight: 800;
     margin-bottom:0;
     text-align: center;
-    padding-top: 20px;
-    min-height: 85px;
+    padding-top: 10px;
 }
 
 .recipeBox2 p{
@@ -26,21 +35,35 @@
     font-weight: 400;
 }
 
+.recipeBox2 li{
+    margin-top: 10px;
+    list-style-type: none;
+    text-align: left;
+}
+
 .short-recipe .recipeImg{
-    border-radius: 25px;
-    width: 200px;
-    height: 120px;
+    border-radius: 15px;
+    width: 300px;
+    height: 220px;
     object-fit: cover;
 }
 
-.recipeButton {
+.short-recipe .recipeButton {
     background-color: #212529; /* Green */
     color: white;
-    padding: 0.3em;
+    padding: 0.5em 1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+    border-radius: 5px;
+}
+
+.short-recipe .recipeButton:hover {
+    background-color: white; /* Green */
+    color: black;
+    border-radius: 5px;
+    border-width: 8px;
 }
 
 

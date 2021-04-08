@@ -90,15 +90,13 @@ function MealPlanner() {
     
     //Toggle for planning board - meal plan and nutrient
     const toggleToMealPlan = (e) => {
-        setSelected("mealplan"); 
+        setSelected("mealplan");
     }
 
     const toggleToNutrient = (e) => {
         calculateNutrition(state);
         setSelected("nutrient");
     }
-
-
 
     const calculateNutrition = (stateData) => {
         const newNutrition = {
@@ -140,13 +138,13 @@ function MealPlanner() {
         <div class="wrapMP">
             <div class="left">
                 <h4>Favourite Dishes</h4>
-                <div className="FavouriteList d-flex flex-wrap justify-content-center">
+                <div className="FavouriteList justify-content-center">
                 {general.generalState.favouriteList.map((dish) => (
                     <FavouriteComponent recipe={dish} onClick={insertToPlannerBoard(dish)}/>
                 ))}
             </div>
             </div>
-            
+
             <div class="right">
                 <div class="button-row justify-content-end">
                     <div class="d-flex flex-row-reverse">
@@ -154,10 +152,10 @@ function MealPlanner() {
                         <Button text="Print" />
                     </div>
                 </div>
-                
+
                 <ul className="tabs group">
-                    <li className={selected=="mealplan"?"active":""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li> 
-                    <li className={selected=="nutrient"?"active":""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
+                    <li className={selected == "mealplan" ? "active" : ""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li>
+                    <li className={selected == "nutrient" ? "active" : ""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
                 </ul>
         
             <div id="content">

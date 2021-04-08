@@ -1,9 +1,7 @@
-
-import '../styles/SearchResult.css';
-import React, {useEffect, useState} from 'react';
-//import logo from '../images/nutrion-black.png'
-import RecipeGrid from '../components/RecipeGrid';
+import React, {useEffect, useState, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import async from 'async';
+import axios from 'axios';
 
 import {FaSearch} from 'react-icons/fa';
 
@@ -12,6 +10,12 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
+
+import '../styles/SearchResult.css';
+import RecipeGrid from '../components/RecipeGrid';
+import Loading from './Loading';
+
+import { generalContext } from '../contexts';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -25,79 +29,86 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function SearchResult() {
-    
-    const [recipeData, setRecipe] = useState(null);
-    const [query, setQuery] = useState('pasta');
-    const API_KEY = "07bdfcda764443ffbcf11862a56f70f5";
-    const data = require("../assets/recipeData.json");
 
+    const general = useContext(generalContext);
+    
+    const [searchResult, setSearchResult] = useState([]);
+    const [query, setQuery] = useState("");
+
+    
     function handleChange(e) {
         setQuery(e.target.value);
     }
 
-    //use this only when using local json file
-    
-    function getRecipe() {
-        setRecipe(data);
-    }
+    useEffect(async () => {
+        if(general.generalState.dishes.length == 0){
+            console.log("Fetching data from API for dish page!")
+            let dishes = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/dish', {
+                params:{
+                    number: 200
+                }
+            });
+            general.setGeneralState({...general.generalState, dishes: dishes.data})
+        }
+    }, []);
 
-    //otherwise use this to get from api
-    /*
-    function getRecipe() {
-        fetch(
-            'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + API_KEY + '&query=' + query
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            setRecipe(data);
-        })
-        .catch(() => {
-            console.log("error");
-        });
-    }
-    */
-    
 
+    async function getRecipe() {
+        console.log("Fetching search result...")
+        try{
+            let dishes = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/dish', {
+                params:{
+                    search: query
+                }
+            });
+            setSearchResult(dishes.data);
+            console.log(dishes.data)
+        }
+        catch(err){
+            console.log(err.response)
+        }
+    }
+    
     
     return (
         <div className="App search-main">
             <div class="form-inline searchInput" >
                 <div class="input-group">
-                <input
-                    key="random1"
-                    type="text"
-                    placeholder="Search for dishes"
-                    class="form-control search-form"
-                    onChange = {handleChange}
-                />
-                
-                <span class="input-group-btn">
-                    <button class="btn btn-primary search-btn"  onClick={getRecipe}>
-                    <FaSearch/>
-                    </button>
-                </span>
-
+                    <input
+                        key="random1"
+                        type="text"
+                        placeholder="Search Dishes"
+                        class="form-control search-form"
+                        onChange = {handleChange}
+                    />
+                    
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary search-btn"  onClick={getRecipe}>
+                        <FaSearch/>
+                        </button>
+                    </span>
+                </div>
+            
+                <div class="form-inline searchInput radio-input" >
+                    <InputLabel htmlFor="age-native-simple">Diet</InputLabel>
+                    <Select
+                        native
+                        onChange={handleChange}
+                        inputProps={{
+                            name: 'age',
+                            id: 'age-native-simple',
+                        }}
+                        >
+                        <option aria-label="None" value="">None</option>
+                        <option value={10}>Vegan</option>
+                        <option value={20}>Paleo</option>
+                        <option value={30}>Ketogenic</option>
+                    </Select>
+                </div>
             </div>
-            <div class="form-inline searchInput radio-input" >
-                <InputLabel htmlFor="age-native-simple">Diet</InputLabel>
-                <Select
-                native
-        
-                onChange={handleChange}
-                inputProps={{
-                    name: 'age',
-                    id: 'age-native-simple',
-                }}
-                >
-                <option aria-label="None" value="" />
-                <option value={10}>Vegan</option>
-                <option value={20}>Paleo</option>
-                <option value={30}>Ketogenic</option>
-                </Select>
-
-            </div>
-            </div>
-            {recipeData && <RecipeGrid recipeData={recipeData} />}
+            {(general.generalState.dishes.length == 0)?<Loading/>:
+            ((searchResult.length > 0)?<RecipeGrid recipeData={searchResult} />:
+                        <RecipeGrid recipeData={general.generalState.dishes} />)}
         </div>
     );
 
