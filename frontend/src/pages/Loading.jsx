@@ -2,7 +2,6 @@ import React from 'react'
 import '../styles/Loading.css'
 import logo from '../assets/images/nutrion-black.png'
 
-
 export default function Loading() {
     return (
         <div>

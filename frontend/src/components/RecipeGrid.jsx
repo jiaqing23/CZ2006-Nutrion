@@ -43,9 +43,9 @@ export default function RecipeGrid({recipeData}) {
                     <div className="col-8 col-sm-8 col-md-10">
                         <div className=" d-flex flex-wrap justify-content-center">
                             {
-                            recipeData.results.map((recipe) =>
+                            recipeData.map((recipe) =>
                                 (<ShortRecipe
-                                    key={recipe.id} 
+                                    key={recipe.dishId} 
                                     recipe={recipe}
                                 />))}
                         </div>

@@ -48,8 +48,19 @@ export default function ProfileSettings(props) {
         setUsername({...username, ["toggle"]:!username.toggle});
     }
     const updateUsername = (e) => {
-        toggleUsername()
         console.log(username.username);
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"username":username.username});
+        //     console.log(res);
+        //     toggleUsername()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // First Name
@@ -61,8 +72,19 @@ export default function ProfileSettings(props) {
         setFirstName({...firstname, ["toggle"]:!firstname.toggle});
     }
     const updateFirstName = (e) => {
-        toggleFirstName()
         console.log(firstname.firstname);
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"firstName":firstname.firstname});
+        //     console.log(res);
+        //     toggleFirstName()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Last Name
@@ -74,8 +96,20 @@ export default function ProfileSettings(props) {
         setLastName({...lastname, ["toggle"]: !lastname.toggle});
     }
     const updateLastName = (e) => {
-        toggleLastName()
         console.log(lastname.lastname)
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"lastName":lastname.lastname});
+        //     console.log(res);
+        //     toggleLastName()
+            
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Email
@@ -87,8 +121,19 @@ export default function ProfileSettings(props) {
         setEmail({...email, ["toggle"]: !email.toggle});
     }
     const updateEmail = (e) => {
-        toggleEmail()
         console.log(email.email)
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"email":email.email});
+        //     console.log(res);
+        //     toggleEmail()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Password & Confirm Password
@@ -101,10 +146,23 @@ export default function ProfileSettings(props) {
         setPassword({...password, ["toggle"]: !password.toggle});
     }
     const updatePassword = (e) => {
-        togglePassword()
         console.log(password.password);
         console.log(confirmpassword);
-        
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/',
+        //     {"password":password.password,
+        //     "confirmPassword":confirmpassword});
+
+        //     console.log(res);
+        //     togglePassword()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Height
@@ -116,9 +174,19 @@ export default function ProfileSettings(props) {
         setHeight({...height, ["toggle"]: !height.toggle});
     }
     const updateHeight = (e) => {
-        toggleHeight()
         console.log(height.height);
-        
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"height":height.height});
+        //     console.log(res);
+        //     toggleHeight()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Weight
@@ -130,8 +198,19 @@ export default function ProfileSettings(props) {
         setWeight({...weight, ["toggle"]: !weight.toggle});
     }
     const updateWeight = (e) => {
-        toggleWeight()
         console.log(weight.weight);
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"weight":weight.weight});
+        //     console.log(res);
+        //     toggleWeight()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Health Conditions
@@ -142,14 +221,24 @@ export default function ProfileSettings(props) {
     const toggleCondition = (e) => {
         setCondition({...condition, ["toggle"]: !condition.toggle});
     }
-    const updateCondition = (e) => {
-        toggleCondition()
-        console.log(condition.conditions)
-        console.log("Updating condition to database!");
-        
-    }
     const setConditions = (conditions) => {
         setCondition({...condition, ["conditions"]: conditions})
+    }
+    const updateCondition = (e) => {
+        console.log(condition.conditions)
+        toggleCondition()
+
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"healthConditions":condition.conditions});
+        //     console.log(res);
+        //     toggleCondition()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
     }
 
     // Lacking Nutrients
@@ -160,15 +249,24 @@ export default function ProfileSettings(props) {
     const toggleNutrient = (e) => {
         setNutrient({...nutrient, ["toggle"]: !nutrient.toggle});
     }
-    const updateNutrient = (e) => {
-        toggleNutrient()
-        console.log(nutrient.nutrients)
-        console.log("Updating nutrient to database!");
-    }
     const setNutrients = (nutrients) => {
         setNutrient({...nutrient, ["nutrients"]: nutrients})
     }
+    const updateNutrient = (e) => {
+        console.log(nutrient.nutrients)
 
+        // try{
+        //     // Need to add userID
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"nutrients":nutrient.nutrients});
+        //     console.log(res);
+        //     toggleNutrient()
+        // }
+        // catch(error) {
+        //     if(error.response){
+        //         console.log(error.response.data);
+        //     }
+        // }
+    }
 
     return (
         <div className="settings-container">

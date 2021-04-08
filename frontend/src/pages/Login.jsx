@@ -9,24 +9,31 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const login = async() => {
-
+    const login = async(e) => {
+        e.preventDefault();
+    
         const form = { 
             email: email,
             password: password,
         }
 
+        console.log(form)
+
         // Call API provided by Backend
         try{
             const res = await axios.get('https://cz2006-nutrion.herokuapp.com/user/login', form);
             console.log(res)
+            // Redirect to HomePage, Login Button > Logout Button in NavBar, update generalStates
         }
-        catch(err) {
-            console.log(err)
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data); // => the response payload
+                setErrorMessage(error.response.data.message)
+            }
         }
 
-        // Redirect to HomePage, Login Button > Logout Button, pass states to Navbar
     }
 
     return (
@@ -39,7 +46,7 @@ export default function Login() {
 
                         <h1 className="card-title mt-3 text-center">Account Login</h1>
 
-                        <form onSubmit={login}>
+                        <form>
                             <div className="form-group input-group">
                                 <input onChange={e=>setEmail(e.target.value)} name="" className="form-control" placeholder="Email address" type="email"/>
                             </div> 
@@ -48,8 +55,10 @@ export default function Login() {
                                 <input onChange={e=>setPassword(e.target.value)} name="" className="form-control" placeholder="Password" type="password"/>
                             </div> 
 
-                            <div className="form-group">
-                                <button type="submit" className="btn btn-dark btn-block">Login</button>
+                            {errorMessage==""?"":<p className="error-message">{errorMessage}</p>}
+
+                            <div className="login-button">
+                                <button onClick={login} className="btn btn-dark btn-block">Login</button>
                             </div> 
                             <p className="text-center">Don't have an account? <Link to="/register">Register now!</Link> </p>                                                                 
                         </form>

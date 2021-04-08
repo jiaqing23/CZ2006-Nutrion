@@ -1,9 +1,10 @@
 import axios from 'axios';
 import async from 'async';
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import '../styles/Registration.css';
 import logo from '../assets/images/nutrion-black.png'
+import { GiConsoleController } from 'react-icons/gi';
 
 export default function Registration() {
 
@@ -12,8 +13,12 @@ export default function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setCPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
     
-    const register = async() => {
+    
+    const register = async(e) => {        
+        e.preventDefault();
 
         const form = { 
             firstName: firstname,
@@ -23,13 +28,19 @@ export default function Registration() {
             confirmPassword: confirmPassword
         }
 
+        console.log(form)
+
         // Call API provided by Backend
         try{
             const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/register', form);
-            console.log(res)
+            console.log(res);
+            // Redirect to Login Page
         }
-        catch(err) {
-            console.log(err)
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data); // => the response payload
+                setErrorMessage(error.response.data.message)
+            }
         }
         
         // Redirect to Profile Settings
@@ -46,7 +57,7 @@ export default function Registration() {
                     <article className="card-body mx-auto">
                         <h1 className="card-title mt-3 text-center">Account Registration</h1>
 
-                        <form onSubmit={register}>
+                        <form>
                             <div className="form-group input-group">
                                 <input onChange={e=>setFirst(e.target.value)} name="" className="form-control" placeholder="First Name" type="text"/>
                             </div>
@@ -67,9 +78,14 @@ export default function Registration() {
                                 <input onChange={e=>setCPassword(e.target.value)} name="" className="form-control" placeholder="Confirm password" type="password"/>
                             </div> 
 
-                            <div className="form-group">
-                                <button type="submit" className="btn btn-dark btn-block">Register</button>
+
+                            {errorMessage==""?"":<p className="error-message">{errorMessage}</p>}
+
+                            <div className="form-group register-button">
+                                <button onClick={register} className="btn btn-dark btn-block">Register</button>
                             </div> 
+
+
                             <p className="text-center">Have an account? <Link to="/login">Log In!</Link> </p>                                                                 
                         </form>
                     </article>
@@ -77,4 +93,4 @@ export default function Registration() {
             </div>
         </div>
     )
-  }
+}
