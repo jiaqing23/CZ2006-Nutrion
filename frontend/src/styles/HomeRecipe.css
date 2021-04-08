@@ -1,4 +1,9 @@
+.dish-anchor{
+    color: black;
+}
+
 .recipeBox{
+    margin: 20px;
     padding: 20px;
     width: fit-content;
     height: fit-content;
@@ -8,6 +13,18 @@
     font-size: 16px;
     text-align: center;
     cursor:pointer;
+    color: black;
+
+}
+
+.recipeBox:hover{
+    background: transparent;
+    display: block;
+    text-decoration: none;
+    background-color: #fffef6;
+    border: black solid 0.5px;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 .recipeBox h2{

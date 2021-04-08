@@ -1,5 +1,6 @@
-.recipeBox{
+.recipeBox2{
     padding: 20px;
+    padding-bottom: 30px;
     width: fit-content;
     height: fit-content;
     float:left;
@@ -10,15 +11,17 @@
     cursor:pointer;
 }
 
-.recipeBox h2{
+.recipeBox2 h2{
     width:200px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 800;
     margin-bottom:0;
     text-align: center;
+    padding-top: 20px;
+    min-height: 85px;
 }
 
-.recipeBox p{
+.recipeBox2 p{
     width:200px;
     font-weight: 400;
 }
@@ -30,10 +33,19 @@
     object-fit: cover;
 }
 
+.recipeButton {
+    background-color: #212529; /* Green */
+    color: white;
+    padding: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
 
 
 @media screen and (max-width: 500px) {
-    .recipeBox{
+    .recipeBox2{
         padding: 10px;
     }
 }

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, {useState, useContext, useParams} from 'react';
+>>>>>>> a9afc0fc816b85fb5a3df08b02d9428b695579bb
 import salmon from '../assets/images/salmon2.jpg';
 import '../styles/DishDetail.css';
 import { FaShoppingCart, FaClock,FaUsers } from 'react-icons/fa';
@@ -27,7 +32,8 @@ const BlackCheckbox = withStyles({
     },
   })(FormControlLabel)
 
-function DishDetail_v2() {
+export default function DishDetail_v2(props) {
+
     const [state, setState] = React.useState({
         checked1: false,
         checked2: false,
@@ -67,6 +73,17 @@ function DishDetail_v2() {
                             </div>
                         <div className="col-md-4">
                             <div className="DishDetail">
+<<<<<<< HEAD
+=======
+                                <h2>{props.recipeTitle}
+                                     <FormControlLabel
+                                        control={<Checkbox icon={<FavoriteBorder />} 
+                                        checkedIcon={<Favorite />} 
+                                        name="checkedH" 
+                                        style={{margin:"10px"}}/>}/>
+                                        </h2>
+                                <h5>by <a href="www.google.com">Micheal Miller</a></h5>
+>>>>>>> a9afc0fc816b85fb5a3df08b02d9428b695579bb
                                 <p>Salmon is rich in omega-3 fatty acids, which can help reduce inflammation, lower blood pressure, and decrease risk factors for diseases.
                                     Baked Salmon only takes 5 min to prepare, then you can just sit and wait.Salmon is rich in omega-3 fatty acids, which can help reduce inflammation, lower blood pressure, and decrease risk factors for diseases.Baked Salmon only takes 5 min to prepare, then you can just sit and wait.</p>
                                 <ul className="fa-ul DishTimePaxIngList">
@@ -143,5 +160,3 @@ function DishDetail_v2() {
          </div>
      );
   }
-  
-  export default DishDetail_v2;

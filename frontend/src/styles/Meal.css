@@ -12,9 +12,10 @@
 
 .recipeBox h2{
     width:200px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     margin-bottom:0;
+    min-height: 80px;
 }
 
 .recipeBox p{
