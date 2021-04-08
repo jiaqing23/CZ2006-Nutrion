@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, {useState, useContext, useParams} from 'react';
 import salmon from '../assets/images/salmon2.jpg';
 import '../styles/DishDetail.css';
 import { faShoppingCart, faClock,faUsers } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +28,8 @@ const BlackCheckbox = withStyles({
     },
   })(FormControlLabel)
 
-function DishDetail_v2() {
+export default function DishDetail_v2(props) {
+
     const [state, setState] = React.useState({
         checked1: false,
         checked2: false,
@@ -59,7 +60,7 @@ function DishDetail_v2() {
                             </div>
                         <div className="col-md-4">
                             <div className="DishDetail">
-                                <h2>Baked Salmon
+                                <h2>{props.recipeTitle}
                                      <FormControlLabel
                                         control={<Checkbox icon={<FavoriteBorder />} 
                                         checkedIcon={<Favorite />} 
@@ -143,5 +144,3 @@ function DishDetail_v2() {
          </div>
      );
   }
-  
-  export default DishDetail_v2;

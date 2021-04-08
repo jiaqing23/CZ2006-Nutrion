@@ -128,22 +128,14 @@ const Listbox = styled('ul')`
 
 export default function CustomizedHook(props) {
   var type = props.type;
-  // var conditions = []
-  // var nutrients = []
-  
-  // props.user.conditions.map((condition) =>
-  //   conditions.push({
-  //     key: title,
-  //     value: condition
-  //   })
-  // )
-  
-  // props.user.nutrients.map((nutrient) =>
-  //   nutrients.push({
-  //     key: title,
-  //     value: nutrient
-  //   })
-  // )
+
+  const handleNutrients = (list) => {
+    props.getNutrients(list)
+  }
+
+  const handleConditions = (list) => {
+    props.getConditions(list)
+  }
   
   const {
     getRootProps,
@@ -164,6 +156,13 @@ export default function CustomizedHook(props) {
     options: type === "nutrient"?nutritionalElements:
     type === "condition"?healthConditions:[{}],
     getOptionLabel: (option) => option.title,
+    onChange: (e, value) => {
+      let list = value.map(a => a.title);
+      if(type=="nutrient")
+        handleNutrients(list)
+      else if(type=="condition")
+        handleConditions(list)
+    },
   });
   
   return (
@@ -175,7 +174,6 @@ export default function CustomizedHook(props) {
             {value.map((option, index) => (
               <Tag label={option.title} {...getTagProps({ index })} />
               ))}
-
             <input {...getInputProps()} />
           </InputWrapper>
         </div>

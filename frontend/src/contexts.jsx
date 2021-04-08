@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { createContext } from 'react';
 
-const userContext = React.createContext({user: {}});
+const userContext = createContext({user: {}});
+const dishContext = createContext({dish: {}});
+const mealPlansContext = createContext({mealplans: {}});
 
-export { userContext };
+export { userContext, dishContext, mealPlansContext };
