@@ -3,7 +3,7 @@ const MealPlanModel = mongoose.model("MealPlan")
 const { v4: uuidv4 } = require('uuid');
 
 module.exports['getMealPlans'] = function(filterMap, callback){
-    MealPlanModel.find(filterMap,(err,result)=>{
+    MealPlanModel.find(filterMap, null, {limit: 30}, (err,result)=>{
         if(err){
             callback(err)
         }
@@ -14,7 +14,7 @@ module.exports['getMealPlans'] = function(filterMap, callback){
 }
 
 module.exports['addMealPlan'] = function (mealPlan, callback) {
-    user['mealPlanId'] =uuidv4()
+    mealPlan['mealPlanId'] =uuidv4()
     MealPlanModel.create([mealPlan]).then(result => {
         callback(null, result[0])
     }).catch(err => {

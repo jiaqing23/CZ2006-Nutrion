@@ -9,15 +9,11 @@ const favouriteListSchema = mongoose.Schema({
         uniqueCaseInsensitive: true
     },
     dish:{
-        type: [{
-            dishId: String
-        }],
+        type: [String],
         default: []
     },
     mealPlan:{
-        type: [{
-            mealPlanId: String
-        }],
+        type: [String],
         default: []
     }
 })

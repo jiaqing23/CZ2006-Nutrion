@@ -10,10 +10,27 @@ const mealPlanSchema = mongoose.Schema({
     },
     dish:{
         type: [{
-            dishId: String,
-            time: String
+            dishId: String
         }],
         default: []
+    },
+    nutrition: {
+        calories: {
+            type: String,
+            default: 0
+        },
+        fat:{
+            type: String,
+            default: 0
+        },
+        carbohydrates:{
+            type: String,
+            default: 0
+        },
+        protein:{
+            type: String,
+            default: 0
+        },
     },
 })
 

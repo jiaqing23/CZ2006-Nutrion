@@ -18,6 +18,7 @@ module.exports['updateFavouriteList'] = function(userId, updateMap, callback){
     FavouriteListModel.findOneAndUpdate(
         {userId: userId},
         updateMap,
+        {new: true},
         (err, result) => {
             if(err){
                 callback(err)
@@ -30,12 +31,13 @@ module.exports['updateFavouriteList'] = function(userId, updateMap, callback){
 }
 
 module.exports['getFavouriteList'] = function(userId, callback){
-    MealPlannerModel.find({userId: userId},(err,result)=>{
+    FavouriteListModel.find({userId: userId},(err,result)=>{
         if(err){
             callback(err)
         }
         else{
-            callback(null,result[0])
+            if(result.length == 0) callback("User not exist!")
+            else callback(null,result[0])
         }
     })
 }

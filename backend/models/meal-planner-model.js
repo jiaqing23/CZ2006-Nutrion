@@ -12,7 +12,7 @@ const mealPlannerSchema = mongoose.Schema({
         type: [{
             dishId: String,
             day: String, //"Monday", "Tuesday", ...
-            time: String, //"1600", "0730", ...
+            mealtype: String, //"Breakfast", "Lunch", "Dinner"
         }],
         default: []
     },

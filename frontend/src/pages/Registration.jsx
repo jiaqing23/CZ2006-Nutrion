@@ -1,3 +1,5 @@
+import axios from 'axios';
+import async from 'async';
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import '../styles/Registration.css';
@@ -10,13 +12,30 @@ export default function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setCPassword] = useState("");
+    
+    const register = async() => {
+        // alert("This is your full name: " + firstname + " " + lastname + '\n' +
+        // "This is your email: " + email +
+        // "\nThis is your password: " + password +
+        // "\nThis is your password: " + confirmPassword)
 
-    const register = () => {
-        alert("This is your full name: " + firstname + " " + lastname + '\n' +
-                "This is your email: " + email +
-                    "\nThis is your password: " + password +
-                        "\nThis is your password: " + confirmPassword)
-        // Call Backend Logic
+        const form = { 
+            firstName: firstname,
+            lastName: lastname,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        }
+
+        // Call API provided by Backend
+        // try{
+        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/register', form);
+        //     console.log(res)
+        // }
+        // catch(err) {
+        //     console.log(err)
+        // }
+        
         // Redirect to Profile Settings
     }
 

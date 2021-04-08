@@ -55,10 +55,6 @@
     zoom: 1;
 }
 
-body { 
-	background: #fefff9; 
-}
-
 #content { 
 	min-height: 400px; 
 	margin: 0 20px 0 20px;
