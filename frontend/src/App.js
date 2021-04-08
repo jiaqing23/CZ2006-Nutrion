@@ -36,7 +36,7 @@ function App() {
                 <Route path="/register"><Registration /></Route>
                 <Route path="/login"><Login /></Route>
                 <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
-                <Route path="/dish"><Navigation /><DishDetail /></Route>
+                <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
                 <Route path="/planner"><Navigation /><MealPlanner /></Route>
                 <Route path="/"><Navigation /><Homepage /></Route>
             </Switch>
