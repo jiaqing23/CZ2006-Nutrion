@@ -59,7 +59,7 @@ function PlannerCard(props) {
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title}>
-          Filet O Fish
+          {props.recipe.title}
         </Typography>
         </CardContent>
       <CardActions disableSpacing>

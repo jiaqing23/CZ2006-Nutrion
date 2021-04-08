@@ -1,7 +1,7 @@
 import React from 'react'
 import Chart from "react-google-charts"
 
-export default function MealPlannerChart() {
+export default function MealPlannerChart(props) {
     return (
         <div>
             {/* <Chart
@@ -42,10 +42,10 @@ export default function MealPlannerChart() {
                             calc: 'stringify',
                         },
                     ],
-                    ['Carbohydrates', 300/(260*7)*100, '#B24674', null],
-                    ['Protein', 60/(50*7)*100, 'FF5274', null],
-                    ['Fat', 19.3/(70*7)*100, 'FF8D74', null],
-                    ['Calories', 1200/(2000*7)*100, 'color: #FFDF99', null],
+                    ['Carbohydrates', props.nutrition.carbohydrates/(260*7)*100, '#B24674', null],
+                    ['Protein', props.nutrition.protein/(50*7)*100, 'FF5274', null],
+                    ['Fat', props.nutrition.fat/(70*7)*100, 'FF8D74', null],
+                    ['Calories', props.nutrition.calories/(2000*7)*100, 'color: #FFDF99', null],
                 ]}
                 options={{
                     title: 'Percentage of Weekly Nutritional Requirement',
