@@ -1,23 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Link} from "react-router-dom";
 import '../styles/HomeRecipe.css';
 import y from"../assets/images/slider/2.jpg";
 import "../assets/images/slider/3.jpg";
 
-class HomeRecipe extends React.Component {
-    // // eslint-disable-next-line
-    // const[recipeInfo,setRecipeInfo]=useState(props);
-    render(){
-        return (
-            <div>
+export default function HomeRecipe(props) {
+
+    return (
+        <div>
+            <Link to={{pathname:'/dish'}} className="dish-anchor" target="_blank">
                 <div className="recipeBox">
                     <img className="recipeImg" src={y} alt="None"/>
-                    <h2>{this.props.recipeTitle}</h2>
-                    <p>The total calories is {this.props.recipeCalories}. Total time taken is {this.props.recipeTime}</p>
+                    <h2>{props.recipeTitle}</h2>
+                    <p>The total calories is {props.recipeCalories}. Total time taken is {props.recipeTime}</p>
                 </div>
-            </div>
-        );
-    }    
-    
-  }
-  
-  export default HomeRecipe;
+            </Link>
+        </div>
+    );
+}    

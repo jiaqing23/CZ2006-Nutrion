@@ -21,7 +21,7 @@ export default function ProfileHeader(props) {
             </div>
 
             <div className="fullname-container">
-                <h3 className="fullname">{props.user.fullname}</h3>
+                <h3 className="fullname">{props.user.firstname} {props.user.lastname}</h3>
             </div>
 
             <div className="height-weight-container">

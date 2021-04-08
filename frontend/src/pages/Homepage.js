@@ -1,20 +1,16 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import HomeSearch from '../components/HomeSearch';
 import HomeRecipe from '../components/HomeRecipe';
 import '../styles/Homepage.css';
 
+import {dishContext, mealPlansContext} from '../contexts';
+import { GiConsoleController } from 'react-icons/gi';
+
 function Homepage() {
-  var recipes = [{recipeTitle:"Bread",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-            {recipeTitle:"Liu Sha Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"},
-            {recipeTitle:"Liu Sha Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"},
-            {recipeTitle:"Liu Sha Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"}];
   
-  var  mealplans = [[{meal:"breakfast",recipeTitle:"Bread",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-                          {meal:"lunch",recipeTitle:"Pasta",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"350kcal",recipeTime:"20minutes"},
-                          {meal:"dinner",recipeTitle:"Salmon",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"15minutes"}],
-                    [{meal:"breakfast",recipeTitle:"Bread",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-                          {meal:"lunch",recipeTitle:"Pasta",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"350kcal",recipeTime:"20minutes"},
-                          {meal:"dinner",recipeTitle:"Salmon",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"15minutes"}]]
+  const dishes = useContext(dishContext);
+  const mealplans = useContext(mealPlansContext);
+  console.log(mealplans);
    
     return (
       <div className="Homepage-container">
@@ -26,14 +22,14 @@ function Homepage() {
             <div className="recipeRecTitle d-flex justify-content-center">Today's Recipes Recommendation</div>
               <div className="recipeRecDesc d-flex justify-content-center">We will recommend food based on your diet preference.</div> 
             <div className=" d-flex flex-wrap justify-content-center">
-              {
-              recipes.map((recipe) =>
-                (<HomeRecipe
-                  recipeTitle={recipe.recipeTitle}
-                  recipeImage={recipe.recipeImage}
-                  recipeCalories={recipe.recipeCalories}
-                  recipeTime={recipe.recipeTime}
-                />))}
+                {
+                dishes.map((dish) =>
+                <HomeRecipe
+                recipeTitle={dish.recipeTitle}
+                recipeImage={dish.recipeImage}
+                recipeCalories={dish.recipeCalories}
+                recipeTime={dish.recipeTime}/>)
+                }
             </div>
           </div>
           <div className="col-2 col-sm-2 col-md-1"></div>
@@ -56,13 +52,14 @@ function Homepage() {
                     <div className="mealplan-container">
                       <div className=" d-flex flex-wrap justify-content-center">
                         {
-                        mealplan.map((recipe) =>
+                          mealplan.map((recipe) =>
                           (<HomeRecipe
                             recipeTitle={recipe.recipeTitle}
                             recipeImage={recipe.recipeImage}
                             recipeCalories={recipe.recipeCalories}
                             recipeTime={recipe.recipeTime}
-                          />))}
+                          />))
+                        }
                       </div>
                     </div>
                   )
