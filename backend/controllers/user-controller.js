@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const UserModel = mongoose.model("User")
 const { v4: uuidv4 } = require('uuid');
+const bcrypt = require("bcrypt");
 
 module.exports['getAllUsers'] = function(callback){
     UserModel.find({},(err,result)=>{
@@ -30,7 +31,6 @@ module.exports['login'] = async function(user, callback){
             callback(err)
         }
         else{
-            callback(null,result)
             if(result.length == 0){
                 callback("Invalid credentials!", null);
             }
