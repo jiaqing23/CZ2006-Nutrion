@@ -94,6 +94,7 @@
 
 .settings-container .edit-button {
     float: right;
+    clear: right;
 }
 
 .settings-container .button {

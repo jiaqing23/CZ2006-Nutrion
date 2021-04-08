@@ -57,45 +57,41 @@ export default function SearchResult() {
     }
     */
     
-
-    
     return (
         <div className="App search-main">
             <div class="form-inline searchInput" >
                 <div class="input-group">
-                <input
-                    key="random1"
-                    type="text"
-                    placeholder="Search for dishes"
-                    class="form-control search-form"
-                    onChange = {handleChange}
-                />
-                
-                <span class="input-group-btn">
-                    <button class="btn btn-primary search-btn"  onClick={getRecipe}>
-                    <FaSearch/>
-                    </button>
-                </span>
-
-            </div>
-            <div class="form-inline searchInput radio-input" >
-                <InputLabel htmlFor="age-native-simple">Diet</InputLabel>
-                <Select
-                native
-        
-                onChange={handleChange}
-                inputProps={{
-                    name: 'age',
-                    id: 'age-native-simple',
-                }}
-                >
-                <option aria-label="None" value="" />
-                <option value={10}>Vegan</option>
-                <option value={20}>Paleo</option>
-                <option value={30}>Ketogenic</option>
-                </Select>
-
-            </div>
+                    <input
+                        key="random1"
+                        type="text"
+                        placeholder="Search Dishes"
+                        class="form-control search-form"
+                        onChange = {handleChange}
+                    />
+                    
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary search-btn"  onClick={getRecipe}>
+                        <FaSearch/>
+                        </button>
+                    </span>
+                </div>
+            
+                <div class="form-inline searchInput radio-input" >
+                    <InputLabel htmlFor="age-native-simple">Diet</InputLabel>
+                    <Select
+                        native
+                        onChange={handleChange}
+                        inputProps={{
+                            name: 'age',
+                            id: 'age-native-simple',
+                        }}
+                        >
+                        <option aria-label="None" value="">None</option>
+                        <option value={10}>Vegan</option>
+                        <option value={20}>Paleo</option>
+                        <option value={30}>Ketogenic</option>
+                    </Select>
+                </div>
             </div>
             {recipeData && <RecipeGrid recipeData={recipeData} />}
         </div>

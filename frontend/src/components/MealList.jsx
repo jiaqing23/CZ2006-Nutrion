@@ -8,7 +8,9 @@ export default function MealList({mealData}) {
 
     return (
         <main>
-            <div className=" d-flex justify-content-center">Here are the meal plans based on your calorie requirement</div> 
+            <div className=" d-flex justify-content-center">
+                <h2>Here are the meal plans based on your calorie requirement!</h2>
+            </div> 
                     <div className="mealplan-container">
                         <div className="nutrients-container">
                             <p>Calories: {nutrients.calories}<span> | </span>Carbohydrates: {nutrients.carbohydrates} <span> | </span> Fat: {nutrients.fat} <span> | </span>Protein: {nutrients.protein}</p>

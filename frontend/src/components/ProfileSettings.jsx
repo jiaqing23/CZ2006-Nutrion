@@ -174,35 +174,40 @@ export default function ProfileSettings(props) {
         <div className="settings-container">
             <h1>Settings</h1>
             <ul>
-                <li>
-                    <a className="picture-anchor" href="#">
-                        <h3>Profile Picture</h3>
-                        <span className="items-settings">
-                            src needs to be fetch from profilepic.profilepic
-                            <img className="profile-image" id="profile-picture" src={ profileimg } alt="Profile Picture"/>
-                        </span>
-                        <span className="edit-button">
-                            <Button onClick={profilepic.toggle==true?updateProfilePic:toggleProfilePic} text={profilepic.toggle==true?"Update":"Edit"}/>
-                        </span>
-                        <span className={profilepic.toggle==true?"items-settings upload-image":"items-settings upload-image hide"}>
-                            <label for="img">Upload image: </label>
-                            <input type="file" id="profilepic" name="img" accept="image/*" onChange={handleProfilePicture}/>
-                        </span>
-                    </a>
-                </li>
+                <div>
+                    <li>
+                        <a className="picture-anchor" href="#">
+                            <h3>Profile Picture</h3>
+                            <span className="items-settings">
+                                <img className="profile-image" id="profile-picture" src={ profileimg } alt="Profile Picture"/>
+                            </span>
+                            <span className="edit-button">
+                                <Button onClick={profilepic.toggle==true?updateProfilePic:toggleProfilePic} text={profilepic.toggle==true?"Update":"Edit"}/>
+                            </span>
+                            <span className={profilepic.toggle==true?"items-settings upload-image":"items-settings upload-image hide"}>
+                                <label for="img">Upload image: </label>
+                                <input type="file" id="profilepic" name="img" accept="image/*" onChange={handleProfilePicture}/>
+                            </span>
+                        </a>
+                    </li>
+
+                </div>
                 
-                <li>
-                    <a>
-                        <h3>Username</h3>
-                        <span className={username.toggle==true?"items-settings hide":"items-settings"}>{username.username}</span>
-                        <span className={username.toggle==true?"items-settings":"items-settings hide"}>
-                            <input onChange={(e)=>setUsername({...username, ["username"]: e.target.value})} className="input-settings" type="text" defaultValue={username.username}/>
-                        </span>
-                        <span className="edit-button">
-                            <Button onClick={username.toggle==true?updateUsername:toggleUsername} text={username.toggle==true?"Update":"Edit"}/>
-                        </span>
-                    </a>
-                </li>
+                <div>
+                    <li>
+                        <a>
+                            <h3>Username</h3>
+                            <span className={username.toggle==true?"items-settings hide":"items-settings"}>{username.username}</span>
+                            <span className={username.toggle==true?"items-settings":"items-settings hide"}>
+                                <input onChange={(e)=>setUsername({...username, ["username"]: e.target.value})} className="input-settings" type="text" defaultValue={username.username}/>
+                            </span>
+                            <span className="edit-button">
+                                <Button onClick={username.toggle==true?updateUsername:toggleUsername} text={username.toggle==true?"Update":"Edit"}/>
+                            </span>
+                        </a>
+                    </li>
+
+                </div>
 
                 <li>
                     <a>

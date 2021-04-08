@@ -8,8 +8,8 @@ export default function HomeRecipe(props) {
     const general = useContext(generalContext);
 
     return (
-        <div>
-            <Link to={{pathname:'/dish'}} className="dish-anchor">
+        <div className="home-recipe-container">
+            <Link to={{pathname:'/dish'}} className="dish-anchor" target="_blank">
                 <div className="recipeBox">
                     <img className="recipeImg" src={props.recipe.image} alt="None" onClick={()=>{
                         general.setGeneralState({...general.generalState, selectedDish: props.recipe});

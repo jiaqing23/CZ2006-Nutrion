@@ -13,6 +13,7 @@ import MealPlannerBoard from './components/MealPlannerBoard';
 import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
+import Loading from './pages/Loading'
 
 import { userContext, generalContext } from './contexts';
 
