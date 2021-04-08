@@ -45,8 +45,22 @@ function MealPlanner() {
                 mealPlanner: mealPlanner.data.dish
             })
             const newState = state;
-        
             mealPlanner.data.dish.forEach((data) => {
+                let idx = mealsToInt[data.mealtype]*7+daysToInt[data.day];
+                newState[idx].push({
+                    id: `${Math.random()}`,
+                    content: {
+                        ...data.dish
+                    }
+                })
+            })
+            setState(newState);
+            //console.log(newState);
+            forceUpdate();
+        }
+        else{
+            const newState = state;
+            general.generalState.mealPlanner.forEach((data) => {
                 let idx = mealsToInt[data.mealtype]*7+daysToInt[data.day];
                 newState[idx].push({
                     id: `${Math.random()}`,

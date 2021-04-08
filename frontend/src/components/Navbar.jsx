@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState, useContext, useEffect, useReducer} from 'react';
 import { Link } from "react-router-dom";
 import '../styles/Navbar.css'
 import '../assets/images/nutrion-black.png';
 import logo from '../assets/images/nutrion-white.png';
 import '../styles/Navbar.css';
 
+import { userContext } from '../contexts';
+
 function Navbar(props) {
+
+    const user = useContext(userContext);
 
     return (
         <nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center">
@@ -26,16 +30,21 @@ function Navbar(props) {
                         <li class="nav-item">
                             <Link to="/mealplan" className="nav-link">Meal Plans</Link>
                         </li>
+                        {user.userId?
+                        <>
                         <li class="nav-item">
                             <Link to="/planner" className="nav-link">Planner</Link>
                         </li>
                         <li class="nav-item">
                             <Link to="/profile" className="nav-link">Profile</Link>
                         </li>
+                        </>:
+                        <></>
+                        }
+                        {user.userId?<></>:
                         <li class="nav-item">
                             <Link to="/login" className="nav-link">Login</Link>
-                        </li>
-                    
+                        </li>}
                     </ul>
                 </div>
             </div>

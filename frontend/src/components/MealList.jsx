@@ -1,30 +1,26 @@
 import React from 'react';
 import Meal from "./Meal"
 import '../styles/MealList.css';
+import HomeRecipe from '../components/HomeRecipe';
 
-export default function MealList({mealData}) {
-
-    const nutrients = mealData.nutrients;
-
+export default function MealList({ mealPlans }) {
+    const mealPlan = mealPlans[0];
     return (
         <main>
             <div className=" d-flex justify-content-center">
                 <h2>Here are the meal plans based on your calorie requirement!</h2>
-            </div> 
-                    <div className="mealplan-container">
-                        <div className="nutrients-container">
-                            <p>Calories: {nutrients.calories}<span> | </span>Carbohydrates: {nutrients.carbohydrates} <span> | </span> Fat: {nutrients.fat} <span> | </span>Protein: {nutrients.protein}</p>
-                        </div>
-                      
-                      <div className=" d-flex flex-wrap justify-content-center">
-                        {mealData.meals.map((meal) => (
-                            <Meal
-                                key={meal.id}
-                                meal={meal}
-                          />))}
-                      </div>
-                    </div>
+            </div>
 
+            {mealPlans.map(mealPlan => (
+                <div className="mealplan-container">
+                    <div className="nutrients-container">
+                        <p>Calories: {Math.round(mealPlan.nutrition.calories)} kcal<span> | </span>Carbohydrates: {Math.round(mealPlan.nutrition.carbohydrates)} g<span> | </span> Fat: {Math.round(mealPlan.nutrition.fat)} g<span> | </span>Protein: {Math.round(mealPlan.nutrition.protein)} g</p>
+                    </div>
+                    <div className=" d-flex flex-wrap justify-content-center">
+                        {mealPlan.dish.map((dish) => (<HomeRecipe recipe={dish}/>))}
+                    </div>
+                </div>
+            ))}
 
         </main>
     );

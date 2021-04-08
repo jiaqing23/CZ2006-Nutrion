@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {  BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Navigation from './components/Navbar';
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
@@ -19,16 +19,16 @@ import { userContext, generalContext } from './contexts';
 
 function App() {
     const [user, setUser] = useState({
-        profilepic: "",
-        username: "@brysonteo",
-        firstname: "Bryson",
-        lastname: "Teo",
-        email: "brysonteoyh@gmail.com",
-        height: "180cm",
-        weight: "63kg",
-        conditions: ["Heart Disease", "Diabetes", "Asthma"],
-        nutrients: ["Vitaminc C", "Protein", "Water"],
-        userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
+        // profilepic: "",
+        // username: "@brysonteo",
+        // firstname: "Bryson",
+        // lastname: "Teo",
+        // email: "brysonteoyh@gmail.com",
+        // height: "180cm",
+        // weight: "63kg",
+        // conditions: ["Heart Disease", "Diabetes", "Asthma"],
+        // nutrients: ["Vitaminc C", "Protein", "Water"],
+        // userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
     });
 
     const [generalState, setGeneralState] = useState({
@@ -41,7 +41,6 @@ function App() {
         mealPlanner: []
     })
 
-
     return (
         <div>
             <generalContext.Provider value={{generalState, setGeneralState}}>
@@ -49,12 +48,12 @@ function App() {
                     <Router>
                         <Switch>
                             <Route path="/register"><Registration /></Route>
-                            <Route path="/login"><Login /></Route>
-                            <Route path="/profile"><Navigation /><Profile /></Route>
+                            <Route path="/login">{user.userId?<Redirect to='/' />:<Login setUser={setUser}/>}</Route>
+                            <Route path="/profile">{user.userId?(<><Navigation /><Profile /></>):<Redirect to='/' />}</Route>
                             <Route path="/recipe"><Navigation /><DishDetail_v2 /></Route>
                             <Route path="/dish"><Navigation /><SearchResult /></Route>
                             <Route path="/mealplan"><Navigation /><MealPlanResult /></Route>
-                            <Route path="/planner"><Navigation /><MealPlanner /></Route>
+                            <Route path="/planner">{user.userId?(<><Navigation /><MealPlanner /></>):<Redirect to='/' />}</Route>
                             <Route path="/"><Navigation /><Homepage /></Route>
                         </Switch>
                     </Router>

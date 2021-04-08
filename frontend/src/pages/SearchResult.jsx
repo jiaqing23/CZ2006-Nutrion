@@ -34,6 +34,7 @@ export default function SearchResult() {
     
     const [searchResult, setSearchResult] = useState([]);
     const [query, setQuery] = useState("");
+    const [searching, setSearching] = useState(false);
 
     
     function handleChange(e) {
@@ -53,8 +54,9 @@ export default function SearchResult() {
     }, []);
 
 
-    async function getRecipe() {
+    async function getRecipe(e) {
         console.log("Fetching search result...")
+        setSearching(true);
         try{
             let dishes = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/dish', {
                 params:{
@@ -67,6 +69,7 @@ export default function SearchResult() {
         catch(err){
             console.log(err.response)
         }
+        setSearching(false);
     }
     
     
@@ -106,7 +109,7 @@ export default function SearchResult() {
                     </Select>
                 </div>
             </div>
-            {(general.generalState.dishes.length == 0)?<Loading/>:
+            {(general.generalState.dishes.length == 0 || searching)?<Loading/>:
             ((searchResult.length > 0)?<RecipeGrid recipeData={searchResult} />:
                         <RecipeGrid recipeData={general.generalState.dishes} />)}
         </div>
