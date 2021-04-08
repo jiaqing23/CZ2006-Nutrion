@@ -5,8 +5,7 @@ import React, {useEffect, useState} from 'react';
 import RecipeGrid from '../components/RecipeGrid';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {FaSearch} from 'react-icons/fa';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -74,7 +73,7 @@ export default function SearchResult() {
                 
                 <span class="input-group-btn">
                     <button class="btn btn-primary search-btn"  onClick={getRecipe}>
-                    <FontAwesomeIcon icon={faSearch}/> 
+                    <FaSearch/>
                     </button>
                 </span>
 

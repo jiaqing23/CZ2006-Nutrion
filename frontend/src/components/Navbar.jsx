@@ -13,7 +13,6 @@ function Navbar() {
                     <Link to="/">
                         <img className="logo" src={logo} alt="" />
                     </Link>
-
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
                     <span class="navbar-toggler-icon"></span>

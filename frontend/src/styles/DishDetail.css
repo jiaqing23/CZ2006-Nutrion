@@ -18,6 +18,7 @@
 
 .DishDetail p{
     text-align: justify;
+    font-size:16px;
 }
 
 .DishDetail a
@@ -57,13 +58,20 @@
 
 .nutrition-data{
     font-family: 'Righteous', cursive;
-    font-size: 40px;
+    font-size: 30px;
+}
+
+.nutrition-title{
+    font-size:15px;
 }
 
 .DishNutritionItem{
     padding: 10px;;
 }
 
+.dishTags{
+    margin-top:10px;
+}
 .dishTags h5{
     font-weight: 800;
 }

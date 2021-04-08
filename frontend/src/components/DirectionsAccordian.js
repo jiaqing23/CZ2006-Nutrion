@@ -17,12 +17,6 @@ const useStyles = makeStyles({
   },
 });
 
-const StyledFormControlLabel = withStyles({
-  label: {
-    fontFamily: "Abhaya Libre",
-  },
-})(FormControlLabel)
-
 const BlackCheckbox = withStyles({
   root: {
     color: grey[900],

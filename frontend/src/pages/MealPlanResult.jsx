@@ -1,10 +1,8 @@
 import '../styles/MealPlanResult.css';
 import React, {useEffect, useState} from 'react';
 import MealList from "../components/MealList";
-//import logo from '../images/nutrion-black.png'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+//import logo from '../images/nutrion-black.png';
+import {FaSearch} from 'react-icons/fa';
 
 
 
@@ -56,7 +54,7 @@ export default function MealPlanResult() {
                 />
                 <span class="input-group-btn">
                     <button class="btn btn-primary search-btn"  onClick={getMealData}>
-                    <FontAwesomeIcon icon={faSearch}/> 
+                    <FaSearch /> 
                     </button>
                 </span>
                 </div>
