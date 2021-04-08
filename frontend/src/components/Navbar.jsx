@@ -5,7 +5,13 @@ import '../assets/images/nutrion-black.png';
 import logo from '../assets/images/nutrion-white.png';
 import '../styles/Navbar.css';
 
-function Navbar() {
+function Navbar(props) {
+
+    const handleLogout = () => {
+        props.setStatus(false)
+        console.log(props.status);
+    }
+
     return (
             <div className="navbar">
                 <div className="logo-container">
@@ -15,9 +21,15 @@ function Navbar() {
                 </div>
                 <div className="nav-item">
                     <ul>
-                        <li><Link to="/login" className="nav-link">Login</Link></li>
-                        <li><Link to="/profile" className="nav-link">Profile</Link></li> 
-                        <li><Link to="/planner" className="nav-link">Planner</Link></li>
+                        <li><Link
+                                to={props.status==true? "/":"/login"}
+                                className="nav-link"
+                                onClick={handleLogout}>
+                                {props.status==true?"Logout":"Login"}
+                            </Link>
+                        </li>
+                        {props.status==true?<li><Link to="/profile" className="nav-link">Profile</Link></li>:<li></li>}
+                        {props.status==true?<li><Link to="/planner" className="nav-link">Planner</Link></li>:<li></li>}
                         <li><Link to="/mealplans" className="nav-link">Meal Plans</Link></li>
                         <li><Link to="/dish" className="nav-link">Dishes</Link></li>
                     </ul>

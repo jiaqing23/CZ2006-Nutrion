@@ -15,10 +15,13 @@ import DishDetail from './pages/DishDetail';
 import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
+import Loading from './pages/Loading'
 
 import {userContext, dishContext, mealPlansContext} from './contexts';
 
 function App() {
+
+  const [loggedIn, setStatus] = useState(true);
 
   const [user, setUser] = useState({
     profilepic:"",
@@ -55,10 +58,10 @@ function App() {
                   <Switch>
                       <Route path="/register"><Registration /></Route>
                       <Route path="/login"><Login /></Route>
-                      <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
-                      <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
-                      <Route path="/planner"><Navigation /><MealPlanner /></Route>
-                      <Route path="/"><Navigation /><Homepage /></Route>
+                      <Route path="/profile"><Navigation status={loggedIn} setStatus={setStatus}/><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
+                      <Route path="/dish"><Navigation status={loggedIn} setStatus={setStatus}/><DishDetail_v2 /></Route>
+                      <Route path="/planner"><Navigation status={loggedIn} setStatus={setStatus}/><MealPlanner /></Route>
+                      <Route path="/"><Navigation status={loggedIn} setStatus={setStatus}/><Homepage /></Route>
                   </Switch>
             </Router>
           </mealPlansContext.Provider>
