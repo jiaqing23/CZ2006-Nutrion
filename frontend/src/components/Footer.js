@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook,faTwitter,faDribbble,faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {FaFacebook,FaTwitter,FaDribbble,FaLinkedin} from 'react-icons/fa';
 
 function Footer(){
     return(
@@ -48,10 +47,10 @@ function Footer(){
 
           <div class="col-md-4 col-sm-6 col-xs-12">
             <ul class="social-icons">
-              <li><a class="facebook" href="http://www.google.com"><FontAwesomeIcon icon={faFacebook}/></a></li>
-              <li><a class="twitter" href="http://www.google.com"><FontAwesomeIcon icon={faTwitter}/></a></li>
-              <li><a class="dribbble" href="http://www.google.com"><FontAwesomeIcon icon={faDribbble}/></a></li>
-              <li><a class="linkedin" href="http://www.google.com"><FontAwesomeIcon icon={faLinkedin}/></a></li>   
+              <li><a class="facebook" href="http://www.google.com"><FaFacebook/></a></li>
+              <li><a class="twitter" href="http://www.google.com"><FaTwitter/></a></li>
+              <li><a class="dribbble" href="http://www.google.com"><FaDribbble/></a></li>
+              <li><a class="linkedin" href="http://www.google.com"><FaLinkedin/></a></li>   
             </ul>
           </div>
         </div>
