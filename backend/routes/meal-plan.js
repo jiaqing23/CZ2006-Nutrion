@@ -9,9 +9,10 @@ const MealPlanController = require('../controllers/meal-plan-controller')
 router.get('/', async (req, res) => {
     const queryMap = {}
 
-    const {calories} = req.query;
+    const {calories, number} = req.query;
 
     if(calories) queryMap["nutrition.calories"] = {$lt: calories};
+    if(number) queryMap['number'] = parseInt(number)
 
     MealPlanController.getMealPlans(
         queryMap,

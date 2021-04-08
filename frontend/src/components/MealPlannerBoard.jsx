@@ -168,50 +168,10 @@ function MealPlannerBoard() {
   
     return (
       <div>
-         
-        
         <div>
           <DragDropContext onDragEnd={onDragEnd}>
             {getTimetableHead()}
-            {getTimetableBody()}
-{/* 
-            <div className="row">
-                {state.map((el, ind) => (
-                <Droppable key={ind} droppableId={`${ind}`}>
-                    {(provided, snapshot) => (
-                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
-                        {el.map((item, index) => (
-                        <Draggable key={item.id} draggableId={item.id} index={index} >
-                            {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
-                            >
-                                <div style={{display: "flex", justifyContent: "space-around" }}>
-                                {item.content}
-                                <button type="button" onClick={() => {
-                                    const newState = [...state];
-                                    newState[ind].splice(index, 1);
-                                    setState(newState);
-                                    }}
-                                >
-                                    delete
-                                </button>
-                                </div>
-                            </div>
-                            )}
-                        </Draggable>
-                        ))}
-                        {provided.placeholder}
-                    </div>
-                    )}
-                </Droppable>
-                ))}
-            </div> */}
-
-            
+            {getTimetableBody()}            
           </DragDropContext>
         </div>
       </div>

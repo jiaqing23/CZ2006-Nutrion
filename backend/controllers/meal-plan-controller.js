@@ -3,7 +3,12 @@ const MealPlanModel = mongoose.model("MealPlan")
 const { v4: uuidv4 } = require('uuid');
 
 module.exports['getMealPlans'] = function(filterMap, callback){
-    MealPlanModel.find(filterMap, null, {limit: 30}, (err,result)=>{
+
+    let number = 30;
+    if(filterMap.number && filterMap.number < number) number = filterMap.number
+    delete filterMap.number;
+
+    MealPlanModel.find(filterMap, null, {limit: number}, (err,result)=>{
         if(err){
             callback(err)
         }

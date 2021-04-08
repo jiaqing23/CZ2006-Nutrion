@@ -4,8 +4,12 @@ const { v4: uuidv4 } = require('uuid');
 const SpoonacularController = require('../controllers/spoonacular-controller')
 
 module.exports['getDishes'] = async function(filterMap, callback){
+    let number = 200;
+    if(filterMap.number && filterMap.number < number) number = filterMap.number
+    delete filterMap.number;
+    
     try{
-        const res = await DishModel.find(filterMap, null, {limit: 200});
+        const res = await DishModel.find(filterMap, null, {limit: number});
         callback(null, res)
     }catch(err){
         callback(err)
