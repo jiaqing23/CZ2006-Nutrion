@@ -1,4 +1,4 @@
-import React, { useState, useContext, useParams } from 'react';
+import React, { useState, useContext, useParams, useLayoutEffect, useEffect } from 'react';
 import '../styles/DishDetail.css';
 import { FaShoppingCart, FaClock, FaUsers } from 'react-icons/fa';
 import Chip from '@material-ui/core/Chip';
@@ -13,6 +13,7 @@ import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import VisibilitySensor from "react-visibility-sensor";
 import { generalContext } from '../contexts';
+import { useLocation } from 'react-router';
 
 const score = 66;
 
@@ -36,6 +37,14 @@ export default function DishDetail_v2(props) {
 
     const general = useContext(generalContext);
     console.log(general);
+
+    const {path} = useLocation();
+    useEffect(() => {
+        console.log("ok")
+        document.querySelector('body').scrollTo({
+            top:0
+        })
+    }, [path]);
 
     const [state, setState] = React.useState({
         checked1: false,
@@ -78,7 +87,7 @@ export default function DishDetail_v2(props) {
                                 <div style={{ width: "60%" }}>
                                     <VisibilitySensor>
                                         {({ isVisible }) => {
-                                            const percentage = isVisible ? score : 0;
+                                            const percentage = isVisible ? general.generalState.selectedDish.healthScore : 0;
                                             return (
                                                 <CircularProgressbarWithChildren
                                                     value={percentage}
@@ -99,18 +108,20 @@ export default function DishDetail_v2(props) {
                                 </ul>
 
                                 <div className="row DishNutritionList">
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">120</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">22g</div><div className="nutrition-title d-flex justify-content-center">CARBS</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">15g</div><div className="nutrition-title d-flex justify-content-center">PROTEIN</div></div>
-                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">12g</div><div className="nutrition-title d-flex justify-content-center">FATS</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">{Math.round(parseFloat(general.generalState.selectedDish.nutrition.calories))}</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">{Math.round(parseFloat(general.generalState.selectedDish.nutrition.carbohydrates))}g</div><div className="nutrition-title d-flex justify-content-center">CARBS</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">{Math.round(parseFloat(general.generalState.selectedDish.nutrition.protein))}g</div><div className="nutrition-title d-flex justify-content-center">PROTEIN</div></div>
+                                    <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">{Math.round(parseFloat(general.generalState.selectedDish.nutrition.fat))}g</div><div className="nutrition-title d-flex justify-content-center">FATS</div></div>
                                 </div>
                                 <div className="dishTags">
                                     <h5>Tags</h5>
                                     <div className="d-flex justify-content-left">
-                                        <Chip style={{ backgroundColor: "black", color: "white", fontFamily: 'Abhaya Libre', marginRight: "5px" }} label="Gluten-free" />
-                                        <Chip style={{ backgroundColor: "black", color: "white", fontFamily: 'Abhaya Libre', marginRight: "5px" }} className="chips" label="Low Sugar" />
-                                        <Chip style={{ backgroundColor: "black", color: "white", fontFamily: 'Abhaya Libre', marginRight: "5px" }} className="chips" label="Low Fat" />
-                                        <Chip style={{ backgroundColor: "black", color: "white", fontFamily: 'Abhaya Libre', marginRight: "5px" }} className="chips" label="Dairy-free" />
+                                        {
+                                            general.generalState.selectedDish.tags.map(tag => (
+                                                <Chip style={{ backgroundColor: "black", color: "white", 
+                                                        fontFamily: 'Abhaya Libre', marginRight: "5px" }} label={tag}/>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>

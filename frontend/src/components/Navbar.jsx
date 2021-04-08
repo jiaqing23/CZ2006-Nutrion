@@ -24,7 +24,7 @@ function Navbar(props) {
                             <Link to="/dish" className="nav-link">Dishes</Link>
                         </li>
                         <li class="nav-item">
-                            <Link to="/mealplans" className="nav-link">Meal Plans</Link>
+                            <Link to="/mealplan" className="nav-link">Meal Plans</Link>
                         </li>
                         <li class="nav-item">
                             <Link to="/planner" className="nav-link">Planner</Link>

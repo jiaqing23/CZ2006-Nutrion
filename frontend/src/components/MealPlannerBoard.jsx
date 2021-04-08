@@ -78,12 +78,12 @@ const getListStyle = isDraggingOver => ({
     //padding: grid,
 });
 
+const recipe = {
+    title:"Burger"
+}
 
-
-function MealPlannerBoard() {
-    const [state, setState] = useState([getItems(1), getItems(1, 10),getItems(1, 50),getItems(2, 60),getItems(2, 20),getItems(2, 111),getItems(2, 222),
-    getItems(1,1224), getItems(2, 101),getItems(2, 201),getItems(1, 601),getItems(1, 201),getItems(1, 1111),getItems(1, 2212),
-    getItems(1,95), getItems(1, 910),getItems(1, 920),getItems(1, 960),getItems(1, 920),getItems(1, 9111),getItems(1, 9222)]);
+function MealPlannerBoard(props) {
+    const {state, setState} = props
 
     function onDragEnd(result) {
       const { source, destination } = result;
@@ -126,7 +126,7 @@ function MealPlannerBoard() {
         for(let j = 0; j < 3; j++){
             let tem = [];
             tem.push(<div className="timetable-col timetable-col-center timetable-black timetable-body-title">
-            <img src={mealsLogo[j]} alt="Breakfast Logo" className="mealslogo" />
+            <img src={mealsLogo[j]} alt="Meals Logo" className="mealslogo" />
             {meals[j]}
             </div>);
             for(let i = 0; i < 7; i++) {
@@ -146,7 +146,7 @@ function MealPlannerBoard() {
                                     style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                                 >
                                     <div style={{display: "flex", justifyContent: "space-around" }}>
-                                    <PlannerCard deleteItem={deleteItem(j*7+i, index)}/>
+                                    <PlannerCard deleteItem={deleteItem(j*7+i, index)} recipe={item.content}/>
                                     </div>
                                 </div>
                                 )}
