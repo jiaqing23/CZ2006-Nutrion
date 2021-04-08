@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
     const {calories, number} = req.query;
 
-    if(calories) queryMap["nutrition.calories"] = {$lt: calories};
+    if(calories) queryMap["nutrition.calories"] = {$lt: parseInt(calories)};
     if(number) queryMap['number'] = parseInt(number)
 
     MealPlanController.getMealPlans(

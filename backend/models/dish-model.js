@@ -16,6 +16,9 @@ const dishSchema = mongoose.Schema({
         type: String,
         default: "Unknown"
     },
+    sourceUrl: {
+        type: String,
+    },
     image: {
         type: String,
         default: "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg"
@@ -66,6 +69,13 @@ const dishSchema = mongoose.Schema({
             },
         }],
         default: []
+    },
+    tags:{
+        type:[String],
+        default:[]
+    },
+    healthScore:{
+        type: Number
     }
 
     

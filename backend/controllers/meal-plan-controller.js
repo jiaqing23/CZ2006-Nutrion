@@ -19,7 +19,7 @@ module.exports['getMealPlans'] = function(filterMap, callback){
 }
 
 module.exports['addMealPlan'] = function (mealPlan, callback) {
-    mealPlan['mealPlanId'] =uuidv4()
+    mealPlan['mealPlanId'] = uuidv4()
     MealPlanModel.create([mealPlan]).then(result => {
         callback(null, result[0])
     }).catch(err => {

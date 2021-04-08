@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/login', [
+router.post('/login', [
         check('email', 'Email is required').isEmail(),
         check('password', 'Password is required').not().isEmpty()
     ],

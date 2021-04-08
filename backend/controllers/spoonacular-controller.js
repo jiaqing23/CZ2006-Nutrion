@@ -1,7 +1,7 @@
 const axios = require("axios")
 
 const SPOONACULAR_BASE_URL = "https://api.spoonacular.com"
-const API_KEY = "947199a931854ea8809064159904d8e2" 
+const API_KEY = "6f6dc911f8e540ad861da46501cf6341" 
 
 const DishController = require('./dish-controller');
 const MealPlanController = require('./meal-plan-controller');
@@ -139,6 +139,9 @@ const addDishToDatabase = (rawDish) => {
             dish.instructions.push(instruction)
         })
     }
+    if(rawDish.healthScore) dish.healthScore = rawDish.healthScore;
+    if(rawDish.sourceUrl) dish.sourceUrl = rawDish.sourceUrl;
+    if(rawDish.diets) dish.tags = rawDish.diets;
 
     DishController.addDish(dish, (err, data) => {
         if(err){

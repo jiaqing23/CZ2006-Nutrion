@@ -45,4 +45,4 @@ mongoose.connect(mongoConnectionString,{
 })
 
 const Sponnacular = require("./controllers/spoonacular-controller")
-//Sponnacular.getMealPlansForWeek( (a,b)=>console.log("ok"));
+//Sponnacular.getDishes(100, "Chicken", (a,b)=>console.log("ok"));
