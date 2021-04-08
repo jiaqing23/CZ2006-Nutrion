@@ -1,13 +1,12 @@
 import './App.css';
-import React, {useState} from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from './components/Navbar';
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
 import Login from './pages/Login'
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
-// eslint-disable-next-line
 import MealPlanner from './components/MealPlanner';
 import PlannerCard from './components/PlannerCard'
 import MealPlannerBoard from './components/MealPlannerBoard';
@@ -16,57 +15,49 @@ import DishDetail_v2 from './pages/DishDetail_v2';
 import SearchResult from './pages/SearchResult';
 import MealPlanResult from './pages/MealPlanResult';
 
-import {userContext, dishContext, mealPlansContext} from './contexts';
+import { userContext, generalContext } from './contexts';
 
 function App() {
+    const [user, setUser] = useState({
+        profilepic: "",
+        username: "@brysonteo",
+        firstname: "Bryson",
+        lastname: "Teo",
+        email: "brysonteoyh@gmail.com",
+        height: "180cm",
+        weight: "63kg",
+        conditions: ["Heart Disease", "Diabetes", "Asthma"],
+        nutrients: ["Vitaminc C", "Protein", "Water"]
+    });
 
-  const [user, setUser] = useState({
-    profilepic:"",
-    username:"@brysonteo",
-    firstname: "Bryson" ,
-    lastname: "Teo",
-    email:"brysonteoyh@gmail.com",
-    height:"180cm",
-    weight:"63kg",
-    conditions:["Heart Disease", "Diabetes", "Asthma"],
-    nutrients:["Vitaminc C", "Protein", "Water"]});
+    const [generalState, setGeneralState] = useState({
+        selectedDish: {},
+        homePageDishes: [],
+        homePageMealPlans: [],
+        dishes: [],
+        mealPlans: [],
+    })
 
-  const [dishes, getDishes] = useState(
-    [{recipeTitle:"Cha Shao Bao",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-    {recipeTitle:"Liu Sha Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"},
-    {recipeTitle:"Kou Rou Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"},
-    {recipeTitle:"Lian Rong Bao",recipeImage:"../assets/images/slider/3.jpg",recipeCalories:"0kcal",recipeTime:"5minutes"}]);
 
-  const [mealplans, getMealPlans] = useState(
-    [[{meal:"breakfast",recipeTitle:"Bread",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-      {meal:"lunch",recipeTitle:"Pasta",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"350kcal",recipeTime:"20minutes"},
-      {meal:"dinner",recipeTitle:"Salmon",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"15minutes"}],
-      [{meal:"breakfast",recipeTitle:"Bread",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"45minutes"},
-      {meal:"lunch",recipeTitle:"Pasta",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"350kcal",recipeTime:"20minutes"},
-      {meal:"dinner",recipeTitle:"Salmon",recipeImage:"../assets/images/slider/2.jpg",recipeCalories:"230kcal",recipeTime:"15minutes"}]]
-  )
-
-  return (
-    <>
-      <div>
-        <dishContext.Provider value={dishes}>
-          <mealPlansContext.Provider value={mealplans}>
-            <Router>
-                  <Switch>
-                      <Route path="/register"><Registration /></Route>
-                      <Route path="/login"><Login /></Route>
-                      <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
-                      <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
-                      <Route path="/planner"><Navigation /><MealPlanner /></Route>
-                      <Route path="/"><Navigation /><Homepage /></Route>
-                  </Switch>
-            </Router>
-          </mealPlansContext.Provider>
-        </dishContext.Provider>
-        <Footer />
-      </div>
-    </>
-  );
+    return (
+        <div>
+            <generalContext.Provider value={{generalState, setGeneralState}}>
+                <userContext.Provider value={user}>
+                    <Router>
+                        <Switch>
+                            <Route path="/register"><Registration /></Route>
+                            <Route path="/login"><Login /></Route>
+                            <Route path="/profile"><Navigation /><Profile /></Route>
+                            <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
+                            <Route path="/planner"><Navigation /><MealPlanner /></Route>
+                            <Route path="/"><Navigation /><Homepage /></Route>
+                        </Switch>
+                    </Router>
+                </userContext.Provider>
+            </generalContext.Provider>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

@@ -10,23 +10,30 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { grey } from "@material-ui/core/colors";
 import { withStyles } from '@material-ui/core/styles';
 
+
 const useStyles = makeStyles({
   root: {
     width: '100%',
   },
 });
 
+const StyledFormControlLabel = withStyles({
+  label: {
+    fontFamily: "Abhaya Libre",
+  },
+})(FormControlLabel)
+
 const BlackCheckbox = withStyles({
-    root: {
+  root: {
+    color: grey[900],
+    '&$checked': {
       color: grey[900],
-      '&$checked': {
-        color: grey[900],
-      },
     },
-    checked: {},
+  },
+  checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-export default function ActionsInAccordionSummary() {
+export default function ActionsInAccordionSummary(props) {
   const classes = useStyles();
 
   return (
@@ -43,17 +50,23 @@ export default function ActionsInAccordionSummary() {
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<BlackCheckbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={props.instruction.step}
           />
         </AccordionSummary>
         <AccordionDetails>
           <Typography color="textSecondary">
-            The click event of the nested action will propagate up and expand the accordion unless
-            you explicitly stop it.
+            {
+              props.instruction.ingredients.map((ingredient) =>
+              (
+                <StyledFormControlLabel
+                  control={<BlackCheckbox style={{ fontFamily: 'Abhaya Libre' }} />}
+                  label={ingredient} />
+              ))
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
-      
+
     </div>
   );
 }

@@ -19,7 +19,6 @@ function Navbar() {
                         <li><Link to="/profile" className="nav-link">Profile</Link></li> 
                         <li><Link to="/planner" className="nav-link">Planner</Link></li>
                         <li><Link to="/mealplans" className="nav-link">Meal Plans</Link></li>
-                        <li><Link to="/dish" className="nav-link">Dishes</Link></li>
                     </ul>
                 </div>
             </div>

@@ -8,12 +8,13 @@ const SpoonacularController = require('../controllers/spoonacular-controller')
 router.get('/', (req, res) => {
     const queryMap = {}
 
-    const {search, id} = req.query;
+    const {search, id, number} = req.query;
     if(id) queryMap.dishId = id;
+    if(number) queryMap.number = parseInt(number);
 
     if(search){
         SpoonacularController.getDishes(
-            100, search,
+            number?parseInt(number):100, search,
             (err, result) => {
                 if(err){
                     return res.status(500).send({ message: `${err}`})

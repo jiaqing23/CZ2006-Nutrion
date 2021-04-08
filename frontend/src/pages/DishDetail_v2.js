@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState, useContext, useParams} from 'react';
-import salmon from '../assets/images/salmon2.jpg';
 import '../styles/DishDetail.css';
 import { faShoppingCart, faClock,faUsers } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@material-ui/core/Chip';
@@ -11,6 +10,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { grey } from "@material-ui/core/colors";
 import { withStyles } from '@material-ui/core/styles';
 import DirectionsAccordian from '../components/DirectionsAccordian'
+
+import { generalContext } from '../contexts';
 
 const BlackCheckbox = withStyles({
     root: {
@@ -29,6 +30,9 @@ const BlackCheckbox = withStyles({
   })(FormControlLabel)
 
 export default function DishDetail_v2(props) {
+
+    const general = useContext(generalContext);
+    console.log(general);
 
     const [state, setState] = React.useState({
         checked1: false,
@@ -50,7 +54,7 @@ export default function DishDetail_v2(props) {
                 <div className="col-sm-10 col-md-8">
                     <div className="row">
                         <div className="col-md-8">
-                            <img className="DishDetailImg" src={salmon} alt="nthg"/>
+                            <img className="DishDetailImg" src={general.generalState.selectedDish.image.replace("312x231", "636x393")} alt="nthg"/>
                             <div className="row DishNutritionList">
                                     <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">120</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
                                     <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">22g</div><div className="nutrition-title d-flex justify-content-center">CARBS</div></div>
@@ -60,20 +64,19 @@ export default function DishDetail_v2(props) {
                             </div>
                         <div className="col-md-4">
                             <div className="DishDetail">
-                                <h2>{props.recipeTitle}
+                                <h2>{general.generalState.selectedDish.title}
                                      <FormControlLabel
                                         control={<Checkbox icon={<FavoriteBorder />} 
                                         checkedIcon={<Favorite />} 
                                         name="checkedH" 
                                         style={{margin:"10px"}}/>}/>
                                         </h2>
-                                <h5>by <a href="www.google.com">Micheal Miller</a></h5>
-                                <p>Salmon is rich in omega-3 fatty acids, which can help reduce inflammation, lower blood pressure, and decrease risk factors for diseases.
-                                    Baked Salmon only takes 5 min to prepare, then you can just sit and wait.</p>
+                                <h5>by {general.generalState.selectedDish.sourceName}</h5>
+                                <p>{general.generalState.selectedDish.summary.replace(/(<([^>]+)>)/gi, "")}</p>
                                 <ul className="fa-ul DishTimePaxIngList">
-                                    <li><FontAwesomeIcon icon={faClock} className="fa-xs"/> 20 minutes</li>
-                                    <li><FontAwesomeIcon icon={faShoppingCart} className="fa-xs"/> 5 ingredients</li>
-                                    <li><FontAwesomeIcon icon={faUsers} className="fa-xs"/> 2 pax</li>
+                                    <li><FontAwesomeIcon icon={faClock} className="fa-xs"/> {general.generalState.selectedDish.readyInMinutes} minutes</li>
+                                    <li><FontAwesomeIcon icon={faShoppingCart} className="fa-xs"/> {general.generalState.selectedDish.ingredients.length} ingredients</li>
+                                    <li><FontAwesomeIcon icon={faUsers} className="fa-xs"/> {general.generalState.selectedDish.servings} pax</li>
                                 </ul>
                                 <div className="dishTags">
                                     <h5>Tags</h5>
@@ -90,55 +93,32 @@ export default function DishDetail_v2(props) {
                     <div className="Ingredient">
                         <h2 style={{fontWeight:"800px",margin:"10px"}}>Ingredients</h2>
                         <div className="ingredientList  d-flex flex-wrap justify-content-between">
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                style={{fontFamily:'Abhaya Libre'}}
-                                name="checked1" />}
-                                label="2 pound side of salmon"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked2" />}
-                                label="5 sprigs fresh rosemary"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked3" />}
-                                label="2 small lemons"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked4" />}
-                                label="4 cloves garlic"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked5" />}
-                                label="Additional chopped fresh herbs"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked6" />}
-                                label="2 tablespoons extra virgin olive oil"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked7" />}
-                                label="1 tsp Kosher salt"/>
-                            <StyledFormControlLabel
-                                control={<BlackCheckbox checked={state.checkedG} 
-                                onChange={handleChange} 
-                                name="checked7" />}
-                                label="¼ teaspoon ground black pepper"/>
+                            {
+                                general.generalState.selectedDish.ingredients.map((ingredient) => 
+                                    (
+                                    <StyledFormControlLabel
+                                        control={<BlackCheckbox style={{fontFamily:'Abhaya Libre'}}/>}
+                                        label= {ingredient.amount + " " + ingredient.name}/>
+                                    )
+                                    
+                                )
+                            }
                         </div>
                     </div>
                     <div>
                     <h2 style={{fontWeight:"800px",marginTop:"20px"}}>Directions</h2>
                     </div>
+                    {/* <DirectionsAccordian steps={}/>
                     <DirectionsAccordian />
-                    <DirectionsAccordian />
-                    <DirectionsAccordian />
+                    <DirectionsAccordian /> */}
+                    {
+                        general.generalState.selectedDish.instructions.map((instruction) => 
+                            (
+                            <DirectionsAccordian instruction={instruction}/>
+                            )
+                            
+                        )
+                    }
                 </div>
              </div>
          </div>
