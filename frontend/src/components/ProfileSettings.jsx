@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useReducer} from 'react'
 import Button from './Button'
 import '../styles/ProfileSettings.css'
 import profileimg from '../assets/images/bryson.jpg'
 import CustomizedHook from '../assets/material-ui/CustomizedHook'
 import { GiConsoleController, GiPropellerBeanie } from 'react-icons/gi'
+import axios from 'axios';
+import async from 'async';
+import { userContext, generalContext } from '../contexts';
 
 export default function ProfileSettings(props) {
-    
+    const user = useContext(userContext);
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
     // Profile Picture
     const [profilepic, setProfilePic] = useState({
         profilepic: "",
@@ -14,6 +18,7 @@ export default function ProfileSettings(props) {
     });
     const toggleProfilePic = (e) => {
         setProfilePic({...profilepic, ["toggle"]: !profilepic.toggle});
+        forceUpdate();
     }
     const updateProfilePic = (e) => {
         toggleProfilePic()
@@ -46,70 +51,74 @@ export default function ProfileSettings(props) {
     });
     const toggleUsername = (e) => {
         setUsername({...username, ["toggle"]:!username.toggle});
+        forceUpdate();
     }
-    const updateUsername = (e) => {
+    const updateUsername =async (e) => {
         console.log(username.username);
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"username":username.username});
-        //     console.log(res);
-        //     toggleUsername()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/' + user.userId, {"username":username.username});
+            console.log(res);
+            toggleUsername()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // First Name
     const [firstname, setFirstName] = useState({
-        firstname: props.user.firstname,
+        firstname: props.user.firstName,
         toggle: false
     });
     const toggleFirstName = (e) => {
         setFirstName({...firstname, ["toggle"]:!firstname.toggle});
+        forceUpdate();
     }
-    const updateFirstName = (e) => {
+    const updateFirstName =async (e) => {
         console.log(firstname.firstname);
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"firstName":firstname.firstname});
-        //     console.log(res);
-        //     toggleFirstName()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            console.log({"firstName":firstname.firstname})
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+ user.userId, {"firstName":firstname.firstname});
+            console.log(res);
+            toggleFirstName()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Last Name
     const [lastname, setLastName] = useState({
-        lastname: props.user.lastname,
+        lastname: props.user.lastName,
         toggle: false
     });
     const toggleLastName = (e) => {
         setLastName({...lastname, ["toggle"]: !lastname.toggle});
+        forceUpdate();
     }
-    const updateLastName = (e) => {
+    const updateLastName =async (e) => {
         console.log(lastname.lastname)
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"lastName":lastname.lastname});
-        //     console.log(res);
-        //     toggleLastName()
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"lastName":lastname.lastname});
+            console.log(res);
+            toggleLastName()
             
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Email
@@ -119,21 +128,22 @@ export default function ProfileSettings(props) {
     });
     const toggleEmail = (e) => {
         setEmail({...email, ["toggle"]: !email.toggle});
+        forceUpdate();
     }
-    const updateEmail = (e) => {
+    const updateEmail =async (e) => {
         console.log(email.email)
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"email":email.email});
-        //     console.log(res);
-        //     toggleEmail()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"email":email.email});
+            console.log(res);
+            toggleEmail()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Password & Confirm Password
@@ -144,25 +154,26 @@ export default function ProfileSettings(props) {
     const [confirmpassword, setConfirmPassword] = useState("");
     const togglePassword = (e) => {
         setPassword({...password, ["toggle"]: !password.toggle});
+        forceUpdate();
     }
-    const updatePassword = (e) => {
+    const updatePassword =async (e) => {
         console.log(password.password);
         console.log(confirmpassword);
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/',
-        //     {"password":password.password,
-        //     "confirmPassword":confirmpassword});
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId,
+            {"password":password.password,
+            "confirmPassword":confirmpassword});
 
-        //     console.log(res);
-        //     togglePassword()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+            console.log(res);
+            togglePassword()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Height
@@ -172,21 +183,22 @@ export default function ProfileSettings(props) {
     });
     const toggleHeight = (e) => {
         setHeight({...height, ["toggle"]: !height.toggle});
+        forceUpdate();
     }
-    const updateHeight = (e) => {
+    const updateHeight =async (e) => {
         console.log(height.height);
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"height":height.height});
-        //     console.log(res);
-        //     toggleHeight()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"height":height.height});
+            console.log(res);
+            toggleHeight()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Weight
@@ -196,76 +208,79 @@ export default function ProfileSettings(props) {
     });
     const toggleWeight = (e) => {
         setWeight({...weight, ["toggle"]: !weight.toggle});
+        forceUpdate();
     }
-    const updateWeight = (e) => {
+    const updateWeight =async (e) => {
         console.log(weight.weight);
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"weight":weight.weight});
-        //     console.log(res);
-        //     toggleWeight()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"weight":weight.weight});
+            console.log(res);
+            toggleWeight()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Health Conditions
     const [condition, setCondition] = useState({
-        conditions: props.user.conditions,
+        conditions: props.user.healthCondition,
         toggle: false
     });
     const toggleCondition = (e) => {
         setCondition({...condition, ["toggle"]: !condition.toggle});
+        forceUpdate();
     }
     const setConditions = (conditions) => {
         setCondition({...condition, ["conditions"]: conditions})
     }
-    const updateCondition = (e) => {
+    const updateCondition = async(e) => {
         console.log(condition.conditions)
         toggleCondition()
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"healthConditions":condition.conditions});
-        //     console.log(res);
-        //     toggleCondition()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"healthCondition":condition.conditions});
+            console.log(res);
+            toggleCondition()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     // Lacking Nutrients
     const [nutrient, setNutrient] = useState({
-        nutrients: props.user.nutrients,
+        nutrients: props.user.lackingNutrient,
         toggle: false
     });
     const toggleNutrient = (e) => {
         setNutrient({...nutrient, ["toggle"]: !nutrient.toggle});
+        forceUpdate();
     }
     const setNutrients = (nutrients) => {
         setNutrient({...nutrient, ["nutrients"]: nutrients})
     }
-    const updateNutrient = (e) => {
+    const updateNutrient = async (e) => {
         console.log(nutrient.nutrients)
 
-        // try{
-        //     // Need to add userID
-        //     const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/', {"nutrients":nutrient.nutrients});
-        //     console.log(res);
-        //     toggleNutrient()
-        // }
-        // catch(error) {
-        //     if(error.response){
-        //         console.log(error.response.data);
-        //     }
-        // }
+        try{
+            // Need to add userID
+            const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId, {"lackingNutrient":nutrient.nutrients});
+            console.log(res);
+            toggleNutrient()
+        }
+        catch(error) {
+            if(error.response){
+                console.log(error.response.data);
+            }
+        }
     }
 
     return (

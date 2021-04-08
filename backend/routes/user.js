@@ -133,7 +133,8 @@ router.post('/register',
 
 router.put('/:userId', (req, res) => {
     const {userId} = req.params;
-    UserController.addUser(
+    UserController.updateUser(
+        userId,
         req.body, 
         (err, result) => {
         if(err){

@@ -65,6 +65,7 @@ module.exports['updateUser'] = function(userId, updateMap, callback){
     UserModel.findOneAndUpdate(
         {userId: userId},
         updateMap,
+        {new: true},
         (err, result) => {
             if(err){
                 callback(err)

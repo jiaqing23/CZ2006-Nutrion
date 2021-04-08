@@ -26,8 +26,8 @@ function App() {
         // email: "brysonteoyh@gmail.com",
         // height: "180cm",
         // weight: "63kg",
-        // conditions: ["Heart Disease", "Diabetes", "Asthma"],
-        // nutrients: ["Vitaminc C", "Protein", "Water"],
+        // healthCondition: ["Heart Disease", "Diabetes", "Asthma"],
+        // lackingNutrient: ["Vitaminc C", "Protein", "Water"],
         // userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
     });
 

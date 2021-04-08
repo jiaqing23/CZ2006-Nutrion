@@ -25,16 +25,18 @@ function MealPlanner() {
     const [selected, setSelected] = useState("mealplan");
     const general = useContext(generalContext);
     const user = useContext(userContext);
-    const [state, setState] = React.useState({
+
+
+    const [buttonState, setButtonState] = React.useState({
         buttonState: '',
     });
-    const handleClick = (e)=> {
-        setState({buttonState: 'loading'})
-        // make asynchronous call
-        setTimeout(() => {
-          setState({buttonState: 'success'})
-        }, 3000)
-      };
+    // const handleClick = (e)=> {
+    //     setButtonState({buttonState: 'loading'})
+    //     // make asynchronous call
+    //     setTimeout(() => {
+    //         setButtonState({buttonState: 'success'})
+    //     }, 3000)
+    //   };
 //Loading,success and error state
 
     //Meal planner board state
@@ -84,7 +86,7 @@ function MealPlanner() {
                 })
             })
             setState(newState);
-            //console.log(newState);
+            console.log(newState);
             forceUpdate();
         }
     }, []);
@@ -105,14 +107,17 @@ function MealPlanner() {
             }
         }
         try{
+            setButtonState({buttonState: 'loading'})
             const res = await axios.put('https://cz2006-nutrion.herokuapp.com'+'/mealPlanner/'+user.userId, {"dish": newDish});
             general.setGeneralState({
                 ...general.generalState, 
                 mealPlanner: newDish
             })
             console.log("Meal planner saved to database");
+            setButtonState({buttonState: 'success'})
         }catch(err){
             console.log(err);
+            setButtonState({buttonState: 'error'})
         }
     }
     
@@ -176,7 +181,7 @@ function MealPlanner() {
             <div class="right">
                 <div class="button-row justify-content-end">
                     <div class="d-flex flex-row-reverse">
-                        <ProgressButton onClick={handleClick} state={state.buttonState}>Save</ProgressButton>
+                        <ProgressButton onClick={saveMealPlanToDatabase} state={buttonState.buttonState}>Save</ProgressButton>
                         <Button text="Print" />
                     </div>
                 </div>

@@ -9,7 +9,7 @@ export default function ProfileOverview(props) {
             <h3>Health Conditions</h3>
             <div className="condition-container">
                 <ul>
-                    {props.user.conditions.map((condition) => (
+                    {props.user.healthCondition.map((condition) => (
                                     <li>{condition}</li>
                                 ))}
                 </ul>
@@ -18,7 +18,7 @@ export default function ProfileOverview(props) {
             <h3>Lacking Nutrients</h3>
             <div className="lack-container">
                 <ul>
-                    {props.user.nutrients.map((nutrient) => (
+                    {props.user.lackingNutrient.map((nutrient) => (
                                         <li>{nutrient}</li>
                                     ))}
                 </ul>

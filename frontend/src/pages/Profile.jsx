@@ -21,15 +21,15 @@ export default function Profile() {
         <div>
             <div style={{height: "1300px", marginTop: "50px"}} className="main-profile-container">
                 <div className="row">
-                    <div className="col-md-2"></div>
+                    <div className="col-md-1"></div>
                     <div className="col-md-3">
                             <ProfileHeader user={user} toggleOverview = {toggleToOverview} toggleSettings = {toggleToSettings} />                            
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-7">
                             {selected === "overview" ? <ProfileOverview user={user}/>:
                                                         <ProfileSettings user={user}/>}           
                 </div>
-                <div className="col-md-2"></div>
+                <div className="col-md-1"></div>
                     </div>
             </div>
         </div>

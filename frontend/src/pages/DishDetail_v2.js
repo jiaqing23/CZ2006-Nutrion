@@ -1,4 +1,4 @@
-import React, { useState, useContext, useParams, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useContext, useParams, useReducer, useEffect } from 'react';
 import '../styles/DishDetail.css';
 import { FaShoppingCart, FaClock, FaUsers } from 'react-icons/fa';
 import Chip from '@material-ui/core/Chip';
@@ -12,8 +12,10 @@ import DirectionsAccordian from '../components/DirectionsAccordian'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import VisibilitySensor from "react-visibility-sensor";
-import { generalContext } from '../contexts';
+import { userContext, generalContext } from '../contexts';
 import { useLocation } from 'react-router';
+import async from 'async';
+import axios from 'axios';
 
 const score = 66;
 
@@ -33,10 +35,11 @@ const StyledFormControlLabel = withStyles({
     },
 })(FormControlLabel)
 
+
 export default function DishDetail_v2(props) {
 
     const general = useContext(generalContext);
-    console.log(general);
+    const user = useContext(userContext);
 
     const {path} = useLocation();
     useEffect(() => {
@@ -45,6 +48,50 @@ export default function DishDetail_v2(props) {
             top:0
         })
     }, [path]);
+
+    const [inFav, setInFav] = useState(false);
+
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    useEffect(async () => {
+        if(user.userId){
+            console.log("Fetching favourite list of user!")
+            let favouriteList = await axios.get('https://cz2006-nutrion.herokuapp.com'+'/favouriteList/'+user.userId);
+            general.setGeneralState({
+                ...general.generalState, 
+                favouriteList: favouriteList.data.dish
+            })
+            
+            favouriteList.data.dish.forEach((data) => {
+                if(data.dishId == general.generalState.selectedDish.dishId){
+                    setInFav(true);
+                    forceUpdate();
+                    console.log("istrue");
+                }
+            })
+        }
+    }, [inFav]);
+
+    const toggleFav = async (e) => {
+        if(user.userId){
+            if(inFav == false){
+                await axios.put('https://cz2006-nutrion.herokuapp.com'+'/favouriteList/'+user.userId + '/addDish', {
+                    dishId: general.generalState.selectedDish.dishId
+                });
+                setInFav(true);
+                forceUpdate();
+                console.log("False to true")
+            }
+            else{
+                const res = await axios.put('https://cz2006-nutrion.herokuapp.com'+'/favouriteList/'+user.userId + '/removeDish', {
+                    dishId: general.generalState.selectedDish.dishId
+                });
+                console.log(res)
+                setInFav(false);
+                forceUpdate();
+                console.log("True to false")
+            }
+        }
+    };
 
     const [state, setState] = React.useState({
         checked1: false,
@@ -76,9 +123,9 @@ export default function DishDetail_v2(props) {
                         <div className="col-md-4">
                             <div className="DishDetail">
                                 <h2>{general.generalState.selectedDish.title}
-
                                     <FormControlLabel
-                                        control={<Checkbox icon={<FavoriteBorder />}
+                                    
+                                        control={<Checkbox checked={inFav} icon={<FavoriteBorder /> } onClick={toggleFav}
                                             checkedIcon={<Favorite />}
                                             name="checkedH"
                                             style={{ margin: "10px" }} />} />
