@@ -7,7 +7,7 @@ import "../assets/images/slider/3.jpg";
 export default function HomeRecipe(props) {
 
     return (
-        <div>
+        <div className="home-recipe-container">
             <Link to={{pathname:'/dish'}} className="dish-anchor" target="_blank">
                 <div className="recipeBox">
                     <img className="recipeImg" src={y} alt="None"/>

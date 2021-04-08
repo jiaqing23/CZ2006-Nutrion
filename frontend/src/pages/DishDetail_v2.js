@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState, useContext, useParams} from 'react';
 import salmon from '../assets/images/salmon2.jpg';
 import '../styles/DishDetail.css';
-import { faShoppingCart, faClock,faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FaShoppingCart, FaClock,FaUsers } from 'react-icons/fa';
 import Chip from '@material-ui/core/Chip';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -50,6 +50,15 @@ export default function DishDetail_v2(props) {
                 <div className="col-sm-10 col-md-8">
                     <div className="row">
                         <div className="col-md-8">
+                            <div className="DishDetail d-flex flex-wrap justify-content-start align-items-end">
+                            <h2>Baked Salmon
+                                     <FormControlLabel
+                                        control={<Checkbox icon={<FavoriteBorder />} 
+                                        checkedIcon={<Favorite />} 
+                                        name="checkedH" />}/>
+                                        </h2>
+                                <h5>by <a href="www.google.com">Micheal Miller</a></h5>
+                            </div>
                             <img className="DishDetailImg" src={salmon} alt="nthg"/>
                             <div className="row DishNutritionList">
                                     <div className="DishNutritionItem col-md-3"><div className="nutrition-data d-flex justify-content-center">120</div><div className="nutrition-title d-flex justify-content-center">CALORIES</div></div>
@@ -69,11 +78,11 @@ export default function DishDetail_v2(props) {
                                         </h2>
                                 <h5>by <a href="www.google.com">Micheal Miller</a></h5>
                                 <p>Salmon is rich in omega-3 fatty acids, which can help reduce inflammation, lower blood pressure, and decrease risk factors for diseases.
-                                    Baked Salmon only takes 5 min to prepare, then you can just sit and wait.</p>
+                                    Baked Salmon only takes 5 min to prepare, then you can just sit and wait.Salmon is rich in omega-3 fatty acids, which can help reduce inflammation, lower blood pressure, and decrease risk factors for diseases.Baked Salmon only takes 5 min to prepare, then you can just sit and wait.</p>
                                 <ul className="fa-ul DishTimePaxIngList">
-                                    <li><FontAwesomeIcon icon={faClock} className="fa-xs"/> 20 minutes</li>
-                                    <li><FontAwesomeIcon icon={faShoppingCart} className="fa-xs"/> 5 ingredients</li>
-                                    <li><FontAwesomeIcon icon={faUsers} className="fa-xs"/> 2 pax</li>
+                                    <li><FaClock/> 20 minutes</li>
+                                    <li><FaShoppingCart/> 5 ingredients</li>
+                                    <li><FaUsers/> 2 pax</li>
                                 </ul>
                                 <div className="dishTags">
                                     <h5>Tags</h5>

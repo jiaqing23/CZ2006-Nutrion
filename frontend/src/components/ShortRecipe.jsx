@@ -16,16 +16,16 @@ export default function ShortRecipe({recipe}) {
     
     return (
         <div className="short-recipe">
-        <div className="recipeBox">
-            <img className="recipeImg" src={imageUrl} alt="recipe" />
-            <h2 className="recipeTitle">{recipe.title}</h2>
-            <ul className="instructions">
-                <li>Calories: </li>
-            </ul>
-            <button >View Meal</button>
-            <button >Add to Favourites</button>
+            <div className="recipeBox2">
+                <img className="recipeImg" src={imageUrl} alt="recipe" />
+                <h2 className="recipeTitle">{recipe.title}</h2>
+                <ul className="instructions">
+                    <li>Calories: </li>
+                </ul>
+                <button className="recipeButton">View Meal</button>
+                <button className="recipeButton">Add to Favourites</button>
+            </div>
         </div>
-    </div>
     )
 }
 

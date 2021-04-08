@@ -8,14 +8,14 @@ export default function MealList({mealData}) {
 
     return (
         <main>
-            <div className="recipeRecDesc d-flex justify-content-center">Here are the meal plans based on your calorie requirement</div> 
+            <div className=" d-flex justify-content-center">
+                <h2>Here are the meal plans based on your calorie requirement!</h2>
+            </div> 
                     <div className="mealplan-container">
-                        <ul>
-                            <li>Calories: {nutrients.calories}</li>
-                            <li>Fat: {nutrients.fat}</li>
-                            <li>Carbohydrates: {nutrients.carbohydrates}</li>
-                            <li>Protein: {nutrients.protein}</li>
-                        </ul>
+                        <div className="nutrients-container">
+                            <p>Calories: {nutrients.calories}<span> | </span>Carbohydrates: {nutrients.carbohydrates} <span> | </span> Fat: {nutrients.fat} <span> | </span>Protein: {nutrients.protein}</p>
+                        </div>
+                      
                       <div className=" d-flex flex-wrap justify-content-center">
                         {mealData.meals.map((meal) => (
                             <Meal

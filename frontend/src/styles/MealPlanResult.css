@@ -1,49 +1,21 @@
-/* .App {
+ .App {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-section {
-    margin: 2rem 0 1rem 0;
+.meal-plan-main {
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
-.controls {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
-input {
+.meal-plan-main .form-control {
     text-align: center;
     padding: 0.5rem;
     margin-bottom: 1rem;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    background-color: #777555;
-    color: #f3f3f3;
-    border: none;
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: #7776AB;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
 
 .nutrients ul {
     display: flex;
@@ -51,45 +23,20 @@ h1 {
     justify-content: space-evenly;
 }
 
-ul {
+.meal-plan-main ul {
     list-style: none;
 }
 
-.meals {
-    display: flex;
-}
-
-img {
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    margin: 0 1rem;
-    max-width: 18 rem;
-    box-shadow: 0 4px 8px 2px rgba(77,77,77,0.15);
-}
-
 .instructions {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 1.3rem;
 }
 
-article a {
-    text-decoration: none;
-    background-color: #777555;;
-    color: #f3f3f3;
-    width: fit-content;
-    padding: 0.5rem 1rem;
-}
+
 
 a:hover {
     cursor: pointer;
     background-color:7776AB; 
-} */
+} 
 
 
 @media only screenn and (max-width: 550px) {
@@ -116,18 +63,19 @@ a:hover {
 } */
 
 .search-container{
-    height:60vh;
+    height:75vh;
 }
 .searchImg{
     width:100%;
-    height:60vh;
+    height:80vh;
     object-fit: cover;
 }
 
 .searchBanner{
     position:relative;
-    top:-40vh;
+    top:-60vh;
     text-align: center;
+    z-index: 10;
 }
 
 .searchInput{
@@ -138,7 +86,6 @@ a:hover {
     z-index: 10;
     width:50%;
     text-align: center;
-    margin-left: 12vw;
 }
 
 /*SEARCH FORM*/
@@ -162,19 +109,20 @@ a:hover {
     font-size:7vw;
     color:#fefff9;
     z-index: 1;
-    width:50%;
-    margin-left: 10vw;
+}
+
+.meal-plan-input {
+    padding-bottom: 20px;
 }
 
 @media screen and (max-width: 500px) {
     .searchBanner{
         position: relative;
-        top:-30vh;
+        top:-50vh;
     }
 
     .search-title{
         font-size:12vw;
-        margin-left:23vw;
     }
 
     .searchInput{

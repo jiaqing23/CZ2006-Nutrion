@@ -58,10 +58,16 @@ function App() {
                   <Switch>
                       <Route path="/register"><Registration /></Route>
                       <Route path="/login"><Login /></Route>
-                      <Route path="/profile"><Navigation status={loggedIn} setStatus={setStatus}/><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
-                      <Route path="/dish"><Navigation status={loggedIn} setStatus={setStatus}/><DishDetail_v2 /></Route>
-                      <Route path="/planner"><Navigation status={loggedIn} setStatus={setStatus}/><MealPlanner /></Route>
-                      <Route path="/"><Navigation status={loggedIn} setStatus={setStatus}/><Homepage /></Route>
+
+                      <Route path="/profile"><Navigation/><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
+                      <Route path="/dish"><Navigation/><DishDetail_v2 /></Route>
+                      <Route path="/planner"><Navigation/><MealPlanner /></Route>
+                      <Route path="/profile"><Navigation /><userContext.Provider value={user}><Profile /></userContext.Provider></Route>
+                      <Route path="/dish"><Navigation /><DishDetail_v2 /></Route>
+                      <Route path="/planner"><Navigation /><MealPlanner /></Route>
+                      <Route path="/searchRecipe"><Navigation /><SearchResult /></Route>
+                      <Route path="/searchMealPlan"><Navigation /><MealPlanResult /></Route>
+                      <Route path="/"><Navigation/><Homepage /></Route>
                   </Switch>
             </Router>
           </mealPlansContext.Provider>

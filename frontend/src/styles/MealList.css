@@ -1,13 +1,9 @@
-HomeSearch{
-    margin-top: 50px;
-}
-
 .Homepage-container{
     background-image: url("../assets/images/homepage-bg.jpg");
     background-size: 100%;
 }
 
-.recipeRecTitle{
+/* .recipeRecTitle{
     margin-top: 5vh;
     font-size: 2vw;
     font-weight: 800;
@@ -16,7 +12,7 @@ HomeSearch{
 .recipeRecDesc{
     font-size: 1vw;
     font-weight: 500;
-}
+} */
 
 .line {
     display: inline-block;
@@ -30,17 +26,36 @@ HomeSearch{
     width: fit-content;
     height: fit-content;
     float:none;
-    margin:2vh auto;
+    padding: 20px;
 }
 
-@media screen and (max-width: 500px) {
+.nutrients-container {
+    padding: 15px;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 900px) {
     .recipeRecTitle{
-        font-size: 4vw;
+        text-align: center;
+        font-size: 35px;
         font-weight: 800;
     }
     
     .recipeRecDesc{
-        font-size: 2.5vw;
+        text-align: center;
+        font-size: 20px;
         font-weight: 500;
     }
 }
+
+/* @media screen and (max-width: 550px) {
+    .recipeRecTitle{
+        font-size: 25px;
+        font-weight: 800;
+    }
+    
+    .recipeRecDesc{
+        font-size: 15px;
+        font-weight: 500;
+    }
+} */
