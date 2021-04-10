@@ -23,7 +23,7 @@ body {
 .navbar{
     background: #000000;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    }
+}
 
 .navbar-dark .navbar-nav .nav-link {
     color: #fffef9;
