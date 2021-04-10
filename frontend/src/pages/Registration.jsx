@@ -14,6 +14,7 @@ export default function Registration() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setCPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [success, setSuccess] = useState(false);
 
     
     
@@ -34,8 +35,7 @@ export default function Registration() {
         try{
             const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/register', form);
             console.log(res);
-            // <Redirect to="/login" />
-            // Redirect to Login Page
+            setSuccess(true);
         }
         catch(error) {
             if(error.response){
@@ -43,11 +43,11 @@ export default function Registration() {
                 setErrorMessage(error.response.data.message)
             }
         }
-        
-        // Redirect to Profile Settings
     }
 
     return (
+        <>
+        {success? <Redirect to='/login' />:
         <div className="background-container">
             <div className="reg-container">
                 <div>
@@ -93,5 +93,7 @@ export default function Registration() {
                 </div>
             </div>
         </div>
+        }
+        </>
     )
 }

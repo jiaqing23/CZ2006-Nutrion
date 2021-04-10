@@ -160,8 +160,19 @@ export default function ProfileSettings(props) {
         console.log(password.password);
         console.log(confirmpassword);
 
+        if(password.password.length < 8){
+            alert("Password must have at least 8 characters");
+            return;
+        }
+        if(password.password != confirmpassword){
+            alert("Password not match");
+            return;
+        }
+        
+
         try{
             // Need to add userID
+            
             const res = await axios.put('https://cz2006-nutrion.herokuapp.com/user/'+user.userId,
             {"password":password.password,
             "confirmPassword":confirmpassword});

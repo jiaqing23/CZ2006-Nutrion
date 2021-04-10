@@ -1,7 +1,7 @@
 const axios = require("axios")
 
 const SPOONACULAR_BASE_URL = "https://api.spoonacular.com"
-const API_KEY = "6f6dc911f8e540ad861da46501cf6341" 
+const API_KEY = "f69d4926689b42aebe94b4de56b446fb" 
 
 const DishController = require('./dish-controller');
 const MealPlanController = require('./meal-plan-controller');

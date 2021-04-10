@@ -1,9 +1,13 @@
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
 import Button from './Button'
 import '../styles/ProfileHeader.css'
 import profileimg from '../assets/images/bryson.jpg'
 
+import {userContext} from '../contexts';
+
 export default function ProfileHeader(props) {
+
+    const user = useContext(userContext);
 
     const toggleOverview = () => {
         props.toggleOverview()
@@ -21,17 +25,17 @@ export default function ProfileHeader(props) {
             </div>
 
             <div className="fullname-container">
-                <h3 className="fullname">{props.user.firstName} {props.user.lastName}</h3>
+                <h3 className="fullname">{user.firstName} {user.lastName}</h3>
             </div>
 
             <div className="height-weight-container">
                 <div className="height-container">
                     <p>HEIGHT</p>
-                    <p className="height">{props.user.height}</p>
+                    <p className="height">{user.height || "-"}</p>
                 </div>
                 <div className="weight-container">
                     <p>WEIGHT</p>
-                    <p className="weight">{props.user.weight}</p>
+                    <p className="weight">{user.weight|| "-"}</p>
                 </div>
             </div>
 

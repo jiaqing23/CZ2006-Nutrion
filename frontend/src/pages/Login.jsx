@@ -28,6 +28,7 @@ export default function Login(props) {
             const res = await axios.post('https://cz2006-nutrion.herokuapp.com/user/login', form);
             console.log(res.data);
             props.setUser(res.data);
+            localStorage.setItem('user', JSON.stringify(res.data))
             // Redirect to HomePage, Login Button > Logout Button in NavBar, update generalStates
         }
         catch(error) {
