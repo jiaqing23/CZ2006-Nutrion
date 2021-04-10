@@ -48,7 +48,7 @@ export default function MealPlannerChart(props) {
                     ['Calories', props.nutrition.calories/(2000*7)*100, 'color: #FFDF99', null],
                 ]}
                 options={{
-                    title: 'Percentage of Weekly Nutritional Requirement',
+                    title: 'Percentage of Weekly Nutritional Requirement (Compared to nutrition requirement of adult)',
                     bar: { groupWidth: '95%' },
                     legend: { position: 'none' },
                 }}

@@ -306,7 +306,7 @@ export default function ProfileSettings(props) {
 
                 </div>
                 
-                <div>
+                {/* <div>
                     <li>
                         <a>
                             <h3>Username</h3>
@@ -320,7 +320,7 @@ export default function ProfileSettings(props) {
                         </a>
                     </li>
 
-                </div>
+                </div> */}
 
                 <li>
                     <a>

@@ -95,6 +95,7 @@ p.height, p.weight {
   
 .btn-group button:hover {
     background-color:black;
+    background: black;
     color: white;
 }  
 

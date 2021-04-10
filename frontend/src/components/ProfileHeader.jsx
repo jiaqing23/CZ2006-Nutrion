@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button from './Button'
 import '../styles/ProfileHeader.css'
 import profileimg from '../assets/images/bryson.jpg'

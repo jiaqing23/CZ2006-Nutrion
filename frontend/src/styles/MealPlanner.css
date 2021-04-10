@@ -49,15 +49,25 @@
 
 .left .FavouriteList{ 
 	overflow: auto;
-	height: 100vh;
+	height: 80vh;
 }
   
 .right::-webkit-scrollbar {
 	display: none;
   }
 
+.left a{
+	color:#8d8d8d;
+	margin:15px;
+	font-size: 20px;
+}
+.left .active a{
+	color:#fefff9 !important;
+	text-decoration: underline;
+	margin:15px;
+}
+
 .left h4{
-	color:#fefff9;
 	margin:15px;
 }
 
@@ -195,4 +205,17 @@
 
 .button-row{
 	margin:10px 20px 10px 10px;
+}
+
+.left .searchInput{
+	width:80%;
+}
+
+.left .search-main{
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+.left .loading-text{
+	color:#fefff9;
 }
