@@ -68,18 +68,18 @@ function PlannerCard(props) {
           <AiFillDelete />
         </IconButton>
         <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          size="small"
-        >
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            // aria-expanded={expanded}
+            aria-label="show more"
+            size="small"
+          >
           <MdExpandMore />
         </IconButton>
       </CardActions>
-       <Collapse in={expanded} timeout="auto" unmountOnExit>
+       {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
        
         <CardContent>
           <Typography variant="body2" color="textSecondary" className={classes.remark}>
@@ -93,7 +93,7 @@ function PlannerCard(props) {
           <AiFillEdit />
         </IconButton>
       </CardActions>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 }

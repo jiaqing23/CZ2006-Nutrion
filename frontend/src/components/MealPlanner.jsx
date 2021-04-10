@@ -23,6 +23,7 @@ const mealsToInt = {"Breakfast":0, "Lunch":1, "Dinner":2};
 
 function MealPlanner() {
     const [selected, setSelected] = useState("mealplan");
+    const [leftSelected, setLeftSelected] = useState("favourite");
     const general = useContext(generalContext);
     const user = useContext(userContext);
 
@@ -30,14 +31,7 @@ function MealPlanner() {
     const [buttonState, setButtonState] = React.useState({
         buttonState: '',
     });
-    // const handleClick = (e)=> {
-    //     setButtonState({buttonState: 'loading'})
-    //     // make asynchronous call
-    //     setTimeout(() => {
-    //         setButtonState({buttonState: 'success'})
-    //     }, 3000)
-    //   };
-//Loading,success and error state
+
 
     //Meal planner board state
     const [state, setState] = useState([[], [], [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]);
@@ -131,6 +125,15 @@ function MealPlanner() {
         setSelected("nutrient");
     }
 
+    const toggleToFavourite = (e) => {
+        setLeftSelected("favourite");
+    }
+
+    const toggleToSearch = (e) => {
+        setLeftSelected("search");
+    }
+
+
     const calculateNutrition = (stateData) => {
         const newNutrition = {
             calories: 0,
@@ -166,10 +169,17 @@ function MealPlanner() {
 
         }
     }
-
+{/* <button type="button" 
+                    className={leftSelected == "favourite" ? "active-tab-button" : "tab-button"} 
+                    onClick={toggleToFavourite}> Favourite </button>
+                <button type="button" 
+                    className={leftSelected == "search" ? "active-tab-button" : "tab-button"} 
+                    onClick={toggleToSearch}> Search </button> */}
     return(
+
         <div class="wrapMP">
             <div class="left">
+                
                 <h4>Favourite Dishes</h4>
                 <div className="FavouriteList justify-content-center">
                 {general.generalState.favouriteList.map((dish) => (
@@ -182,7 +192,7 @@ function MealPlanner() {
                 <div class="button-row justify-content-end">
                     <div class="d-flex flex-row-reverse">
                         <ProgressButton onClick={saveMealPlanToDatabase} state={buttonState.buttonState}>Save</ProgressButton>
-                        <Button text="Print" />
+                        <Button text="Print" onClick={()=>window.print()}/>
                     </div>
                 </div>
 
@@ -190,14 +200,16 @@ function MealPlanner() {
                     <li className={selected == "mealplan" ? "active" : ""}> <a href="#one" onClick={toggleToMealPlan}> <GiHotMeal /> Meal Plan </a></li>
                     <li className={selected == "nutrient" ? "active" : ""}> <a href="#two" onClick={toggleToNutrient}> <GiPieChart /> Nutrient </a></li>
                 </ul>
-        
+
             <div id="content">
                  {selected=="mealplan"?
                  <MealPlannerBoard state={state} setState={setState}/>:
                  <MealPlannerChart nutrition={nutrition}/>} 
             </div>
+
             </div>
         </div>
+
     );
 
 

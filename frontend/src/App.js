@@ -38,7 +38,8 @@ function App() {
         dishes: [],
         mealPlans: [],
         favouriteList: [],
-        mealPlanner: []
+        mealPlanner: [],
+        homePageSearch: ""
     })
 
     return (

@@ -3,7 +3,34 @@
 	 by Chris Coyier
 	 http://css-tricks.com
 */
+.tab-button{
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    transition: 0.3s;
+}
 
+.active-tab-button{
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    transition: 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #3F3F3F;
+    background: #3F3F3F radial-gradient(circle, transparent 0.5%, #3F3F3F 0.5%) center/15000%;
+}
+
+.tab-button:active {
+    background-color: #AAA;
+    background-size: 100%;
+    transition: background 0s;
+}
 
 .wrapMP {
   display: flex;
