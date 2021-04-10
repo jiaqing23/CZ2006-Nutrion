@@ -28,7 +28,7 @@ function App() {
         // weight: "63kg",
         // healthCondition: ["Heart Disease", "Diabetes", "Asthma"],
         // lackingNutrient: ["Vitaminc C", "Protein", "Water"],
-        // userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
+        userId: "0adc1e17-48e0-4f79-9807-0c3f444b8a32"
     });
 
     const [generalState, setGeneralState] = useState({
@@ -53,7 +53,8 @@ function App() {
                             <Route path="/recipe"><Navigation /><DishDetail_v2 /></Route>
                             <Route path="/dish"><Navigation /><SearchResult /></Route>
                             <Route path="/mealplan"><Navigation /><MealPlanResult /></Route>
-                            <Route path="/planner">{user.userId?(<><Navigation /><MealPlanner /></>):<Redirect to='/' />}</Route>
+                            <Route path="/planner"><><Navigation /><MealPlanner /></></Route>
+                            {/* <Route path="/planner">{user.userId?(<><Navigation /><MealPlanner /></>):<Redirect to='/' />}</Route> */}
                             <Route path="/"><Navigation /><Homepage /></Route>
                         </Switch>
                     </Router>

@@ -60,6 +60,7 @@ function MealPlanner() {
                 favouriteList: favouriteList.data.dish,
                 mealPlanner: mealPlanner.data.dish
             })
+            console.log(mealPlanner.data.dish);
             const newState = state;
             mealPlanner.data.dish.forEach((data) => {
                 let idx = mealsToInt[data.mealtype]*7+daysToInt[data.day];
@@ -75,7 +76,7 @@ function MealPlanner() {
             forceUpdate();
         }
         else{
-            const newState = state;
+            const newState = [[], [], [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
             general.generalState.mealPlanner.forEach((data) => {
                 let idx = mealsToInt[data.mealtype]*7+daysToInt[data.day];
                 newState[idx].push({
@@ -86,7 +87,6 @@ function MealPlanner() {
                 })
             })
             setState(newState);
-             console.log(newState);
             forceUpdate();
         }
     }, []);
@@ -97,11 +97,11 @@ function MealPlanner() {
         for(let i = 0; i < 3; i++){
             for(let j = 0; j < 7; j++){
                 state[i*7+j].forEach((dish) => {
-
                     newDish.push({
                         dishId: dish.content.dishId,
                         mealtype: meals[i],
-                        day: days[j]
+                        day: days[j],
+                        dish: dish.content
                     })
                 })
             }
@@ -112,7 +112,7 @@ function MealPlanner() {
             general.setGeneralState({
                 ...general.generalState, 
                 mealPlanner: newDish
-            })
+            }) 
             console.log("Meal planner saved to database");
             setButtonState({buttonState: 'success'})
         }catch(err){
