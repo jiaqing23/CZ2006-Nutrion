@@ -21,6 +21,17 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:userId', (req, res) => {
+    const {userId} = req.params;
+    UserController.getUser(userId, (err, result) => {
+        if(err){
+            return res.status(500).send({ message: `${err}`})
+        }
+        else{
+            return res.status(200).send(result)
+        }
+    })
+})
 
 router.post('/login', [
         check('email', 'Email is required').isEmail(),
