@@ -1,7 +1,7 @@
 import React from 'react';
 import Meal from "./Meal"
 import '../styles/MealList.css';
-import HomeRecipe from '../components/HomeRecipe';
+import HomeRecipe from './HomeRecipe';
 
 export default function MealList({ mealPlans }) {
     const mealPlan = mealPlans[0];

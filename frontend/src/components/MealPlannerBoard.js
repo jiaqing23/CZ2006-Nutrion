@@ -1,7 +1,6 @@
 
-import React, {useState} from 'react'
+import React from 'react'
 //import '../styles/MealPlanner.css'
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import '../styles/MealPlannerBoard.css'
 

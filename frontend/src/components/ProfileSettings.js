@@ -3,7 +3,6 @@ import Button from './Button'
 import '../styles/ProfileSettings.css'
 import profileimg from '../assets/images/bryson.jpg'
 import CustomizedHook from '../assets/material-ui/CustomizedHook'
-import { GiConsoleController, GiPropellerBeanie } from 'react-icons/gi'
 import axios from 'axios';
 import async from 'async';
 import { userContext, generalContext } from '../contexts';

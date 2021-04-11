@@ -1,4 +1,4 @@
-import React, { useState, useContext, useParams, useReducer, useEffect } from 'react';
+import React, { useState, useContext, useReducer, useEffect } from 'react';
 import '../styles/DishDetail.css';
 import { FaShoppingCart, FaClock, FaUsers } from 'react-icons/fa';
 import Chip from '@material-ui/core/Chip';

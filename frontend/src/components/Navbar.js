@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useReducer } from 'react';
+import React, { useContext} from 'react';
 import { Link } from "react-router-dom";
 import '../styles/Navbar.css'
 import '../assets/images/nutrion-black.png';
